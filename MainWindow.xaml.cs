@@ -50,13 +50,7 @@ namespace anne
                 slp = new SLP();
                 slp.drawNet(SLP_Canvas);
             }
-            Grid grid0 = (Grid)SLP_Canvas.Parent;
-            Grid grid1 = (Grid)grid0.Parent;
-            double width = grid1.Width;
-            width = SLP_Canvas.ActualWidth;
-            //width = grid1.RenderSize.Width;
-            int i =0;
-            i++;
+            
         }
 
         private void MLP_Selection(object sender, RoutedEventArgs e)
@@ -67,8 +61,7 @@ namespace anne
 
         private void SLP_Canvas_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            int i = 0;
-            i++;
+            slp.formatNet(SLP_Canvas);
         }
     }
 }

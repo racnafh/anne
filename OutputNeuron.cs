@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
+using System.Windows.Shapes;
 
 namespace anne
 {
@@ -10,7 +12,7 @@ namespace anne
     {
         Fkt activFkt;
         List<Weight> connections;
-
+        Ellipse elli;
         double input;
         double output;
 
@@ -31,7 +33,24 @@ namespace anne
             }
         }
 
-        public OutputNeuron() { activFkt = new Fkt(); connections = new List<Weight>(); }
+        public Ellipse Elli
+        {
+            get
+            {
+                return elli;
+            }
+        }
+
+        public OutputNeuron()
+        {
+            activFkt = new Fkt();
+            connections = new List<Weight>();
+            elli = new Ellipse();
+            elli.Width = 50;
+            elli.Height = 50;
+            elli.Stroke = Brushes.Black;
+            elli.Fill = Brushes.Blue;
+        }
 
         public void setFkt(ushort Index) { activFkt.Fktindex = Index; }
 
