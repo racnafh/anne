@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:anne"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="655">
+        Title="MainWindow" Height="768" Width="1024">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="100" />
@@ -30,10 +30,166 @@
         </Grid>
         <TabControl Grid.Row="1" Name="MainFrame" BorderThickness="0">
             <TabItem Visibility="Collapsed">
-                <StackPanel>
-                    <Label Content="Content goes here..." />
-                    <Button Click="SLP_Selection">SLP</Button>
-                </StackPanel>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Menu>
+                        <Menu.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <DockPanel HorizontalAlignment="Right"/>
+                            </ItemsPanelTemplate>
+                        </Menu.ItemsPanel>
+                        <MenuItem Width="20" Height="20"> 
+                            <MenuItem.Background>
+                                <ImageBrush ImageSource="Resources/iconFlagGermany.png" Stretch="Uniform"/>
+                            </MenuItem.Background>
+                        </MenuItem>
+                        <MenuItem Width="20" Height="20">
+                            <MenuItem.Background>
+                                <ImageBrush ImageSource="Resources/iconFlagGreatBritain.png" Stretch="Uniform"/>
+                            </MenuItem.Background>
+                        </MenuItem>
+                    </Menu>
+                    <Grid Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <GroupBox Grid.Column="0" Grid.Row="0" Header="Schwellenwert" FontSize="16" FontWeight="Bold" BorderBrush="#FF420046" BorderThickness="2">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="Resources/schwell.png"/>
+                                <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                    <Label Content="Tutorials" FontSize="20" FontWeight="Bold" Foreground="#FF62E418" Margin="20,0,0,0"/>
+                                    <Button Content="Schellwert" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12" FontWeight="Bold"></Button>
+                                    <Button Content="Fehler" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12"></Button>
+                                    <Button Content="Training" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12"></Button>
+                                    <Label Content="Exercise" FontSize="20" FontWeight="Bold" Foreground="#FFE4AC18" Margin="20,0,0,0"/>
+                                    <Button Content="AND" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12"></Button>
+                                    <Button Content="OR" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12"></Button>
+                                    <Button Content="XOR" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12"></Button>
+                                    <Label Content="Extra" FontSize="20" FontWeight="Bold" Foreground="Red" Margin="20,0,0,0"/>
+                                    <Button Content="Linieare Separierbarkeit" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12"></Button>
+                                </StackPanel>
+                            </Grid>
+                        </GroupBox>
+                        <GroupBox  Grid.Column="1" Grid.Row="0" Header="Single Layer Perceptron" FontSize="16" FontWeight="Bold" BorderBrush="#FF420046" BorderThickness="2">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="Resources/slp.png"/>
+                                <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                    <Label Content="Tutorials" FontSize="20" FontWeight="Bold" Foreground="#FF62E418" Margin="20,0,0,0"/>
+                                    <Button Content="Schellwert" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12" FontWeight="Bold"></Button>
+                                    <Button Content="Fehler" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12"></Button>
+                                    <Button Content="Training" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12"></Button>
+                                    <Label Content="Exercise" FontSize="20" FontWeight="Bold" Foreground="#FFE4AC18" Margin="20,0,0,0"/>
+                                    <Button Content="AND" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12"></Button>
+                                    <Button Content="OR" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12"></Button>
+                                    <Button Content="XOR" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12"></Button>
+                                    <Label Content="Extra" FontSize="20" FontWeight="Bold" Foreground="Red" Margin="20,0,0,0"/>
+                                    <Button Content="Linieare Separierbarkeit" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12"></Button>
+                                </StackPanel>
+                            </Grid>
+                        </GroupBox>
+                        <GroupBox  Grid.Column="2" Grid.Row="0" Header="Multi Layer Perceptron" FontSize="16" FontWeight="Bold" BorderBrush="#FF420046" BorderThickness="2">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="Resources/mlp.png"/>
+                                <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                    <Label Content="Tutorials" FontSize="20" FontWeight="Bold" Foreground="#FF62E418" Margin="20,0,0,0"/>
+                                    <Button Content="Schellwert" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12" FontWeight="Bold"></Button>
+                                    <Button Content="Fehler" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12"></Button>
+                                    <Button Content="Training" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12"></Button>
+                                    <Label Content="Exercise" FontSize="20" FontWeight="Bold" Foreground="#FFE4AC18" Margin="20,0,0,0"/>
+                                    <Button Content="AND" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12"></Button>
+                                    <Button Content="OR" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12"></Button>
+                                    <Button Content="XOR" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12"></Button>
+                                    <Label Content="Extra" FontSize="20" FontWeight="Bold" Foreground="Red" Margin="20,0,0,0"/>
+                                    <Button Content="Linieare Separierbarkeit" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12"></Button>
+                                </StackPanel>
+                            </Grid>
+                        </GroupBox>
+                        <GroupBox  Grid.Column="0" Grid.Row="1" Header="Radial Basis Function" FontSize="16" FontWeight="Bold" BorderBrush="#FF420046" BorderThickness="2">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="Resources/rbf.png"/>
+                                <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                    <Label Content="Tutorials" FontSize="20" FontWeight="Bold" Foreground="#FF62E418" Margin="20,0,0,0"/>
+                                    <Button Content="Schellwert" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12" FontWeight="Bold"></Button>
+                                    <Button Content="Fehler" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12"></Button>
+                                    <Button Content="Training" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12"></Button>
+                                    <Label Content="Exercise" FontSize="20" FontWeight="Bold" Foreground="#FFE4AC18" Margin="20,0,0,0"/>
+                                    <Button Content="AND" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12"></Button>
+                                    <Button Content="OR" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12"></Button>
+                                    <Button Content="XOR" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12"></Button>
+                                    <Label Content="Extra" FontSize="20" FontWeight="Bold" Foreground="Red" Margin="20,0,0,0"/>
+                                    <Button Content="Linieare Separierbarkeit" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12"></Button>
+                                </StackPanel>
+                            </Grid>
+                        </GroupBox>
+                        <GroupBox  Grid.Column="1" Grid.Row="1" Header="Self Organizing Map" FontSize="16" FontWeight="Bold" BorderBrush="#FF420046" BorderThickness="2">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="Resources/som.png"/>
+                                <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                    <Label Content="Tutorials" FontSize="20" FontWeight="Bold" Foreground="#FF62E418" Margin="20,0,0,0"/>
+                                    <Button Content="Schellwert" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12" FontWeight="Bold"></Button>
+                                    <Button Content="Fehler" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12"></Button>
+                                    <Button Content="Training" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12"></Button>
+                                    <Label Content="Exercise" FontSize="20" FontWeight="Bold" Foreground="#FFE4AC18" Margin="20,0,0,0"/>
+                                    <Button Content="AND" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12"></Button>
+                                    <Button Content="OR" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12"></Button>
+                                    <Button Content="XOR" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12"></Button>
+                                    <Label Content="Extra" FontSize="20" FontWeight="Bold" Foreground="Red" Margin="20,0,0,0"/>
+                                    <Button Content="Linieare Separierbarkeit" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12"></Button>
+                                </StackPanel>
+                            </Grid>
+                        </GroupBox>
+                        <GroupBox  Grid.Column="2" Grid.Row="1" Header="Learning Vector Quanticitation" FontSize="16" FontWeight="Bold" BorderBrush="#FF420046" BorderThickness="2">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="Resources/lvq.png"/>
+                                <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                    <Label Content="Tutorials" FontSize="20" FontWeight="Bold" Foreground="#FF62E418" Margin="20,0,0,0"/>
+                                    <Button Content="Schellwert" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12" FontWeight="Bold"></Button>
+                                    <Button Content="Fehler" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12"></Button>
+                                    <Button Content="Training" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12"></Button>
+                                    <Label Content="Exercise" FontSize="20" FontWeight="Bold" Foreground="#FFE4AC18" Margin="20,0,0,0"/>
+                                    <Button Content="AND" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12"></Button>
+                                    <Button Content="OR" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12"></Button>
+                                    <Button Content="XOR" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12"></Button>
+                                    <Label Content="Extra" FontSize="20" FontWeight="Bold" Foreground="Red" Margin="20,0,0,0"/>
+                                    <Button Content="Linieare Separierbarkeit" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12"></Button>
+                                </StackPanel>
+                            </Grid>
+                        </GroupBox>
+                    </Grid>
+                </Grid>
             </TabItem>
             <TabItem Visibility="Collapsed">
                 <Grid>

@@ -21,6 +21,7 @@ namespace anne
     public partial class MainWindow : Window
     {
         SLP slp;
+        ViewModelSLP viewmodelslp;
 
         public MainWindow()
         {
@@ -48,7 +49,11 @@ namespace anne
             if (slp == null)
             {
                 slp = new SLP();
-                slp.drawNet(SLP_Canvas);
+                slp.Add(new InputNeuron());
+                slp.Add(new InputNeuron());
+                slp.Add(new OutputNeuron());
+                slp.FullConnect();
+                viewmodelslp = new ViewModelSLP(slp, SLP_Canvas);
             }
             
         }
@@ -61,7 +66,7 @@ namespace anne
 
         private void SLP_Canvas_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            slp.formatNet(SLP_Canvas);
+            viewmodelslp.formatNet();
         }
     }
 }

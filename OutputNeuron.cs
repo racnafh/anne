@@ -10,11 +10,22 @@ namespace anne
 {
     class OutputNeuron
     {
+        private static int index;
+        public static int Index
+        {
+            get { return index; }
+        }
+        private bool counterReduced = false;
         Fkt activFkt;
         List<Weight> connections;
-        Ellipse elli;
         double input;
         double output;
+        int number;
+
+        public int Number
+        {
+            get { return number; }
+        }
 
         public double Input
         {
@@ -33,24 +44,7 @@ namespace anne
             }
         }
 
-        public Ellipse Elli
-        {
-            get
-            {
-                return elli;
-            }
-        }
-
-        public OutputNeuron()
-        {
-            activFkt = new Fkt();
-            connections = new List<Weight>();
-            elli = new Ellipse();
-            elli.Width = 50;
-            elli.Height = 50;
-            elli.Stroke = Brushes.Black;
-            elli.Fill = Brushes.Blue;
-        }
+        public OutputNeuron() { activFkt = new Fkt(); connections = new List<Weight>(); number = index++; }
 
         public void setFkt(ushort Index) { activFkt.Fktindex = Index; }
 
@@ -64,5 +58,21 @@ namespace anne
             foreach (Weight wgt in connections)
                 input += wgt.getWeightedInput();
         }
+
+        // Destruktor 
+        ~OutputNeuron()
+        { 
+            if(! counterReduced) 
+                index--; 
+        } 
+        // Dispose aus der IDisposable-Schnittstelle 
+        public void Dispose()
+        {
+            if (!counterReduced)
+            {
+                index--;
+                counterReduced = true;
+            }
+        } 
     }
 }

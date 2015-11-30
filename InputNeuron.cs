@@ -10,10 +10,21 @@ namespace anne
 {
     class InputNeuron
     {
+        private static int index;
+        public static int Index
+        {
+            get { return index; }
+        }
+        private bool counterReduced = false;
         Fkt activFkt;
-        Ellipse elli;
         double input;
         double output;
+        int number;
+
+        public int Number
+        {
+            get { return number; }
+        }
 
         public double Input
         {
@@ -37,27 +48,26 @@ namespace anne
             }
         }
 
-        public Ellipse Elli
-        {
-            get
-            {
-                return elli;
-            }
-        }
-
-        public InputNeuron()
-        {
-            activFkt = new Fkt();
-            Input = 0;
-            elli = new Ellipse();
-            elli.Width = 50;
-            elli.Height = 50;
-            elli.Stroke = Brushes.Black;
-            elli.Fill = Brushes.Red;
-        }
+        public InputNeuron() { activFkt = new Fkt(); Input = 0; number=index++; }
 
         public void setFkt(ushort index) { activFkt.Fktindex = index; output = activFkt.calculateOutput(input); }
 
         public ushort getFkt() { return activFkt.Fktindex; }
+
+        // Destruktor 
+        ~InputNeuron()
+        { 
+            if(! counterReduced) 
+                index--; 
+        } 
+        // Dispose aus der IDisposable-Schnittstelle 
+        public void Dispose()
+        {
+            if (!counterReduced)
+            {
+                index--;
+                counterReduced = true;
+            }
+        } 
     }
 }

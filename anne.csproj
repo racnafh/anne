@@ -73,6 +73,7 @@
     </ApplicationDefinition>
     <Compile Include="SLP.cs" />
     <Compile Include="ViewModelBase.cs" />
+    <Compile Include="ViewModelSLP.cs" />
     <Compile Include="Weight.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -131,6 +132,30 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\anne.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\iconFlagGermany.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\iconFlagGreatBritain.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\lvq.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\mlp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\rbf.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\schwell.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\slp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\som.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
