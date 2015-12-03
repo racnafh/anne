@@ -1,0 +1,11 @@
+﻿<ResourceDictionary   
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=mscorlib">
+    <system:String x:Key="Lektion_1_Titel">Schwellenwertelement</system:String>
+    <system:String x:Key="Lektion_2_Titel">Single Layer Perzeptron</system:String>
+    <system:String x:Key="Lektion_3_Titel">Multi Layer Perzeptron</system:String>
+    <system:String x:Key="Lektion_4_Titel">Radiale Basisfunktionen Netze</system:String>
+    <system:String x:Key="Lektion_5_Titel">Selbstorganisierende Karte</system:String>
+    <system:String x:Key="Lektion_6_Titel">Lernende Vektorquantisierung</system:String>
+</ResourceDictionary>

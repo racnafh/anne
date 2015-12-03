@@ -4,41 +4,12 @@
              xmlns:local="clr-namespace:anne"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <ControlTemplate x:Key="InputNeuronEllipse" TargetType="Button">
-            <Grid>
-                <Ellipse Width="{TemplateBinding Width}"
-                         Height="{TemplateBinding Height}"
-                         Stroke="Black"
-                         StrokeThickness="1"
-                         Fill="Red">
-                </Ellipse>
-                <ContentPresenter HorizontalAlignment="Center" 
-                      VerticalAlignment="Center"
-                      Content="{Binding Output}" >
-                </ContentPresenter>
-            </Grid>
-        </ControlTemplate>
-        <ControlTemplate x:Key="OutputNeuronEllipse" TargetType="Button">
-            <Grid>
-                <Ellipse Width="{TemplateBinding Width}"
-                         Height="{TemplateBinding Height}"
-                         Stroke="Black"
-                         StrokeThickness="1"
-                         Fill="Blue">
-                </Ellipse>
-                <ContentPresenter HorizontalAlignment="Center" 
-                      VerticalAlignment="Center"
-                      Content="{Binding Output}" >
-                </ContentPresenter>
-            </Grid>
-        </ControlTemplate>
-        <Style x:Key="InputNeuron" TargetType="{x:Type Button}" >
-            <Setter Property="Template" Value="{StaticResource InputNeuronEllipse}" />
-        </Style>
-        
-        <Style x:Key="OutputNeuron" TargetType="{x:Type Button}" >
-            <Setter Property="Template" Value="{StaticResource OutputNeuronEllipse}" />
-        </Style>
-        
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Controls.xaml"/>
+                <ResourceDictionary Source="Resources/CultResource.en-US.xaml"/>
+                <ResourceDictionary Source="Resources/CultResource.de-DE.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

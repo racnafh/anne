@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -67,6 +69,47 @@ namespace anne
         private void SLP_Canvas_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             viewmodelslp.formatNet();
+        }
+
+        private void Set_En_Lang(object sender, RoutedEventArgs e)
+        {
+            ChangeLanguage("en-US");
+        }
+
+        private void Set_De_Lang(object sender, RoutedEventArgs e)
+        {
+            ChangeLanguage("de-DE");
+        }
+
+        /// <summary>
+        /// Sprache wechseln
+        /// </summary>
+        /// <param name="culture">specific culture</param>
+        public void ChangeLanguage(string culture)
+        {
+            // Alle Woerterbuecher finden   
+            List<ResourceDictionary> dictionaryList = new List<ResourceDictionary>();
+            foreach (ResourceDictionary dictionary in
+                           Application.Current.Resources.MergedDictionaries)
+            {
+                dictionaryList.Add(dictionary);
+            }
+
+            // Woerterbuch waehlen
+            string requestedCulture = string.Format("Resources/CultResource.{0}.xaml", culture);
+            ResourceDictionary resourceDictionary =
+                    dictionaryList.FirstOrDefault(d => d.Source.OriginalString == requestedCulture);
+
+            // Altes Woerterbuch loeschen und Neues hinzufuegen       
+            if (resourceDictionary != null)
+            {
+                Application.Current.Resources.MergedDictionaries.Remove(resourceDictionary);
+                Application.Current.Resources.MergedDictionaries.Add(resourceDictionary);
+            }
+
+            // Hauptthread ueber neues Culture informieren
+            Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(culture);
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(culture);
         }
     }
 }
