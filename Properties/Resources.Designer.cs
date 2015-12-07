@@ -73,6 +73,16 @@ namespace anne.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap home {
+            get {
+                object obj = ResourceManager.GetObject("home", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap iconFlagGermany {
             get {
                 object obj = ResourceManager.GetObject("iconFlagGermany", resourceCulture);
@@ -126,6 +136,16 @@ namespace anne.Properties {
         internal static System.Drawing.Bitmap schwell {
             get {
                 object obj = ResourceManager.GetObject("schwell", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap schwellenwert {
+            get {
+                object obj = ResourceManager.GetObject("schwellenwert", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -35,11 +35,31 @@
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
                     </Grid>
                 </ItemsPanelTemplate>
             </Menu.ItemsPanel>
-            <MenuItem Header="{DynamicResource Lektion_1_Titel}">
+            <MenuItem Name="Menu_Lektion_1"  Header="{DynamicResource Lektion_1_Titel}" Visibility="Hidden">
+                <MenuItem Header="{DynamicResource Lektion_Titel}">
+                    <MenuItem Header="{DynamicResource Lektion_1_Untertitel_1}" Click="Lektion_1_Untertitel_1_Click"></MenuItem>
+                    <MenuItem Header="{DynamicResource Lektion_1_Untertitel_2}"></MenuItem>
+                    <MenuItem Header="{DynamicResource Lektion_1_Untertitel_3}">
+                        <MenuItem Header="{DynamicResource Lektion_1_Untertitel_3_1}"></MenuItem>
+                        <MenuItem Header="{DynamicResource Lektion_1_Untertitel_3_2}"></MenuItem>
+                        <MenuItem Header="{DynamicResource Lektion_1_Untertitel_3_3}"></MenuItem>
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem Header="{DynamicResource Uebung_Titel}">
+                    <MenuItem Header="{DynamicResource Uebung_1_Untertitel_1}"></MenuItem>
+                    <MenuItem Header="{DynamicResource Uebung_1_Untertitel_2}"></MenuItem>
+                </MenuItem>
+                <MenuItem Header="{DynamicResource Extra_Titel}">
+                    <MenuItem Header="{DynamicResource Extra_1_Untertitel_1}"></MenuItem>
+                    <MenuItem Header="{DynamicResource Extra_1_Untertitel_2}"></MenuItem>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Name="Menu_Lektion_2" Header="{DynamicResource Lektion_2_Titel}" Grid.Column="1" Visibility="Hidden">
                 <MenuItem Header="Tutorials">
                     <MenuItem Header="Schwellwert"></MenuItem>
                     <MenuItem Header="Fehler"></MenuItem>
@@ -53,7 +73,7 @@
                     <MenuItem Header="Lineare Separierbarkeit"></MenuItem>
                 </MenuItem>
             </MenuItem>
-            <MenuItem Header="{DynamicResource Lektion_2_Titel}" Grid.Column="1">
+            <MenuItem Name="Menu_Lektion_3" Header="{DynamicResource Lektion_3_Titel}" Grid.Column="2" Visibility="Hidden"> 
                 <MenuItem Header="Tutorials">
                     <MenuItem Header="Schwellwert"></MenuItem>
                     <MenuItem Header="Fehler"></MenuItem>
@@ -67,7 +87,7 @@
                     <MenuItem Header="Lineare Separierbarkeit"></MenuItem>
                 </MenuItem>
             </MenuItem>
-            <MenuItem Header="{DynamicResource Lektion_3_Titel}" Grid.Column="2">
+            <MenuItem Name="Menu_Lektion_4" Header="{DynamicResource Lektion_4_Titel}" Grid.Column="3"  Visibility="Hidden">
                 <MenuItem Header="Tutorials">
                     <MenuItem Header="Schwellwert"></MenuItem>
                     <MenuItem Header="Fehler"></MenuItem>
@@ -81,7 +101,7 @@
                     <MenuItem Header="Lineare Separierbarkeit"></MenuItem>
                 </MenuItem>
             </MenuItem>
-            <MenuItem Header="{DynamicResource Lektion_4_Titel}" Grid.Column="3">
+            <MenuItem Name="Menu_Lektion_5" Header="{DynamicResource Lektion_5_Titel}" Grid.Column="4" Visibility="Hidden">
                 <MenuItem Header="Tutorials">
                     <MenuItem Header="Schwellwert"></MenuItem>
                     <MenuItem Header="Fehler"></MenuItem>
@@ -95,7 +115,7 @@
                     <MenuItem Header="Lineare Separierbarkeit"></MenuItem>
                 </MenuItem>
             </MenuItem>
-            <MenuItem Header="{DynamicResource Lektion_5_Titel}" Grid.Column="4">
+            <MenuItem Name="Menu_Lektion_6" Header="{DynamicResource Lektion_6_Titel}" Grid.Column="5" Visibility="Hidden">
                 <MenuItem Header="Tutorials">
                     <MenuItem Header="Schwellwert"></MenuItem>
                     <MenuItem Header="Fehler"></MenuItem>
@@ -109,26 +129,17 @@
                     <MenuItem Header="Lineare Separierbarkeit"></MenuItem>
                 </MenuItem>
             </MenuItem>
-            <MenuItem Header="{DynamicResource Lektion_6_Titel}" Grid.Column="5">
-                <MenuItem Header="Tutorials">
-                    <MenuItem Header="Schwellwert"></MenuItem>
-                    <MenuItem Header="Fehler"></MenuItem>
-                    <MenuItem Header="Training"></MenuItem>
-                </MenuItem>
-                <MenuItem Header="Exercise">
-                    <MenuItem Header="AND"></MenuItem>
-                    <MenuItem Header="OR"></MenuItem>
-                </MenuItem>
-                <MenuItem Header="Extras">
-                    <MenuItem Header="Lineare Separierbarkeit"></MenuItem>
-                </MenuItem>
+            <MenuItem Width="20" Height="20" Grid.Column="7" Click="Set_En_Lang" BorderBrush="{x:Null}" Visibility="Hidden">
+                <MenuItem.Background>
+                    <ImageBrush ImageSource="Resources/Home.png" Stretch="Uniform"/>
+                </MenuItem.Background>
             </MenuItem>
-            <MenuItem Width="20" Height="20"  Grid.Column="7" Click="Set_De_Lang">
+            <MenuItem Width="20" Height="20"  Grid.Column="8" Click="Set_De_Lang">
                 <MenuItem.Background>
                     <ImageBrush ImageSource="Resources/iconFlagGermany.png" Stretch="Uniform"/>
                 </MenuItem.Background>
             </MenuItem>
-            <MenuItem Width="20" Height="20" Grid.Column="8" Click="Set_En_Lang">
+            <MenuItem Width="20" Height="20" Grid.Column="9" Click="Set_En_Lang">
                 <MenuItem.Background>
                     <ImageBrush ImageSource="Resources/iconFlagGreatBritain.png" Stretch="Uniform"/>
                 </MenuItem.Background>
@@ -149,7 +160,7 @@
                     <GroupBox Grid.Column="0" Grid.Row="0" BorderBrush="#FF4800FF" BorderThickness="2" Style="{DynamicResource GroupBoxStyleWithoutGap}">
                         <GroupBox.Header>
                             <GroupBox BorderBrush="#FF4800FF" BorderThickness="2" Style="{DynamicResource GroupBoxStyleWithoutGap}" Background="White">
-                                <TextBlock Text="Schwellenwert" FontSize="16" FontWeight="Bold" Margin="0,3,0,0"/>
+                                <TextBlock Text="{DynamicResource Lektion_1_Titel}" FontSize="16" FontWeight="Bold" Margin="0,3,0,0"/>
                             </GroupBox>
                         </GroupBox.Header>
                         <Grid>
@@ -159,16 +170,19 @@
                             </Grid.ColumnDefinitions>
                             <Image Source="Resources/schwell.png"/>
                             <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                                <Label Content="Tutorials" FontSize="20" FontWeight="Bold" Foreground="#FF62E418" Margin="20,0,0,0"/>
-                                <Button Content="Schellwert" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12" FontWeight="Bold"></Button>
-                                <Button Content="Fehler" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12" FontWeight="Bold"></Button>
-                                <Button Content="Training" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12" FontWeight="Bold"></Button>
-                                <Label Content="Exercise" FontSize="20" FontWeight="Bold" Foreground="#FFE4AC18" Margin="20,0,0,0"/>
-                                <Button Content="AND" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12" FontWeight="Bold"></Button>
-                                <Button Content="OR" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12" FontWeight="Bold"></Button>
-                                <Button Content="XOR" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12" FontWeight="Bold"></Button>
-                                <Label Content="Extra" FontSize="20" FontWeight="Bold" Foreground="Red" Margin="20,0,0,0"/>
-                                <Button Content="Linieare Separierbarkeit" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12" FontWeight="Bold"></Button>
+                                <Label Content="{DynamicResource Lektion_Titel}" FontSize="16" FontWeight="Bold" Foreground="#FF62E418" Margin="20,0,0,0"/>
+                                <Button Content="{DynamicResource Lektion_1_Untertitel_1}" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="10" FontWeight="Bold" Click="Lektion_1_Untertitel_1_Click"></Button>
+                                <Button Content="{DynamicResource Lektion_1_Untertitel_2}" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="10" FontWeight="Bold"></Button>
+                                <Button Content="{DynamicResource Lektion_1_Untertitel_3}" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="10" FontWeight="Bold"></Button>
+                                <Button Content="{DynamicResource Lektion_1_Untertitel_3_1}" Background="{x:Null}" BorderBrush="{x:Null}" Margin="70,0,0,0" HorizontalAlignment="Left" FontSize="10" FontWeight="Bold"></Button>
+                                <Button Content="{DynamicResource Lektion_1_Untertitel_3_2}" Background="{x:Null}" BorderBrush="{x:Null}" Margin="70,0,0,0" HorizontalAlignment="Left" FontSize="10" FontWeight="Bold"></Button>
+                                <Button Content="{DynamicResource Lektion_1_Untertitel_3_3}" Background="{x:Null}" BorderBrush="{x:Null}" Margin="70,0,0,0" HorizontalAlignment="Left" FontSize="10" FontWeight="Bold"></Button>
+                                <Label Content="{DynamicResource Uebung_Titel}" FontSize="16" FontWeight="Bold" Foreground="#FFE4AC18" Margin="20,0,0,0"/>
+                                <Button Content="{DynamicResource Uebung_1_Untertitel_1}" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="10" FontWeight="Bold"></Button>
+                                <Button Content="{DynamicResource Uebung_1_Untertitel_2}" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="10" FontWeight="Bold"></Button>
+                                <Label Content="{DynamicResource Extra_Titel}" FontSize="16" FontWeight="Bold" Foreground="Red" Margin="20,0,0,0"/>
+                                <Button Content="{DynamicResource Extra_1_Untertitel_1}" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="10" FontWeight="Bold"></Button>
+                                <Button Content="{DynamicResource Extra_1_Untertitel_2}" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="10" FontWeight="Bold"></Button>
                             </StackPanel>
                         </Grid>
                     </GroupBox>
@@ -293,38 +307,48 @@
             <TabItem Visibility="Collapsed">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="20"/>
                         <RowDefinition Height="*"/>
+                        <RowDefinition Height="30"/>
                     </Grid.RowDefinitions>
-                    <Menu>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0">
+                            <GroupBox Header="{DynamicResource Definition_Titel}" BorderBrush="Red" BorderThickness="2">
+                                <StackPanel>
+                                    <TextBlock Text="{DynamicResource Lektion_1_Untertitel_1_Definition}" TextWrapping="Wrap" Margin="10,10,10,0"/>
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                                        <Label Content="y = " Padding="0" VerticalAlignment="Center" BorderThickness="0,7,0,0"/>
+                                        <Label Content="{}{" Padding="0" FontSize="60" VerticalAlignment="Center" BorderThickness="0,0,0,5"/>
+                                        <StackPanel VerticalAlignment="Center">
+                                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" >
+                                                <Label Content="1, falls " Padding="0" VerticalAlignment="Center" BorderThickness="0,0,0,2"/>
+                                                <StackPanel VerticalAlignment="Center">
+                                                    <Label Content=" n" Padding="0" VerticalAlignment="Center" FontSize="8" HorizontalAlignment="Center"/>
+                                                    <Label Content="&#8721;" Padding="0" VerticalAlignment="Center" FontSize="16" HorizontalAlignment="Center" Margin="0,0,0,6"/>
+                                                    <Label Content=" k=1" Padding="0" VerticalAlignment="Center" FontSize="8" HorizontalAlignment="Center"/>
+                                                </StackPanel>
+                                                <Label Content="wₖxₖ ≥ θ," Padding="0" VerticalAlignment="Center" BorderThickness="0,0,0,2"/>
+                                            </StackPanel>
+                                            <Label Content="0, sonst." Padding="0" VerticalAlignment="Center"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </StackPanel>
+                            </GroupBox>
+                            <Image Source="Resources/schwellenwert.png" />    
+                        </StackPanel>
                         
-                    </Menu>
+                    </Grid>
                     <Grid Grid.Row="1">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="200"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
-                        <Grid Grid.Column="0">
-                            <Canvas Name="SLP_Canvas" Grid.Row="1" SizeChanged="SLP_Canvas_SizeChanged"/>
-                        </Grid>
-                        <Grid Grid.Column="1">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="100"/>
-                            </Grid.RowDefinitions>
-                            <StackPanel Grid.Row="0" Orientation="Vertical" HorizontalAlignment="Left">
-                                <Label Content="Info 1" />
-                                <Label Content="Info 2" />
-                                <Label Content="Info 3" />
-                                <Label Content="Info 4" />
-                                <Label Content="Info 5" />
-                            </StackPanel>
-                            <TabControl Grid.Row="1">
-                                <TabItem Header="Training"></TabItem>
-                                <TabItem Header="Test"></TabItem>
-                                <TabItem Header="Play"></TabItem>
-                            </TabControl>
-                        </Grid>
+                        <Label Grid.Column="1" Content="{DynamicResource Lektion_1_Untertitel_1}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"></Label>
+                        <Button Grid.Column="2" Content="{DynamicResource Lektion_1_Untertitel_2}" FontSize="14" Background="{x:Null}" BorderThickness="3,2,0,0" Click="tab_forward"></Button>
                     </Grid>
                 </Grid>
             </TabItem>
@@ -333,6 +357,46 @@
             </TabItem>
             <TabItem Visibility="Collapsed">
                 <Label Content="4.Content goes here..." />
+            </TabItem>
+            <TabItem Visibility="Collapsed">
+                <Label Content="4.Content goes here..." />
+            </TabItem>
+            <TabItem Visibility="Collapsed">
+                <Label Content="4.Content goes here..." />
+            </TabItem>
+            <TabItem Visibility="Collapsed">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0"/>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <GroupBox Grid.Column="1" Header="Optionen">
+                                
+                            </GroupBox>
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_3}" FontSize="14" Background="{x:Null}" BorderThickness="0,2,3,0" Click="tab_back"></Button>
+                        <Label Grid.Column="1" Content="{DynamicResource Uebung_1_Untertitel_1}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"></Label>
+                        <Button Grid.Column="2" Content="{DynamicResource Uebung_1_Untertitel_2}" FontSize="14" Background="{x:Null}" BorderThickness="3,2,0,0" Click="tab_forward"></Button>
+                    </Grid>
+                </Grid>
             </TabItem>
         </TabControl>
     </Grid>

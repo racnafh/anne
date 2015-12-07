@@ -40,35 +40,68 @@ namespace anne
             this.Close();
         }
 
-        private void Home_Selection(object sender, RoutedEventArgs e)
-        {
-            MainFrame.SelectedIndex = 0;
-        }
-        private void SLP_Selection(object sender, RoutedEventArgs e)
-        {
+        //private void Home_Selection(object sender, RoutedEventArgs e)
+        //{
+        //    MainFrame.SelectedIndex = 0;
+        //}
+        //private void SLP_Selection(object sender, RoutedEventArgs e)
+        //{
             
-            MainFrame.SelectedIndex = 1;
-            if (slp == null)
+        //    MainFrame.SelectedIndex = 1;
+        //    if (slp == null)
+        //    {
+        //        slp = new SLP();
+        //        slp.Add(new InputNeuron());
+        //        slp.Add(new InputNeuron());
+        //        slp.Add(new OutputNeuron());
+        //        slp.FullConnect();
+        //        viewmodelslp = new ViewModelSLP(slp, SLP_Canvas);
+        //    }
+            
+        //}
+
+        //private void MLP_Selection(object sender, RoutedEventArgs e)
+        //{
+        //    //if (slp == null) slp = new SLP();
+        //    MainFrame.SelectedIndex = 2;
+        //}
+
+        //private void SLP_Canvas_SizeChanged(object sender, SizeChangedEventArgs e)
+        //{
+        //    viewmodelslp.formatNet();
+        //}
+        private void Lektion_1_Untertitel_1_Click(object sender, RoutedEventArgs e)
+        {
+            if(!(sender is MenuItem)) Menu_Visability(true);
+            MainFrame.SelectedIndex=1;
+        }
+        
+        private void Menu_Visability(bool decision)
+        {
+            if (decision)
             {
-                slp = new SLP();
-                slp.Add(new InputNeuron());
-                slp.Add(new InputNeuron());
-                slp.Add(new OutputNeuron());
-                slp.FullConnect();
-                viewmodelslp = new ViewModelSLP(slp, SLP_Canvas);
+                Menu_Lektion_1.Visibility = Visibility.Visible;
+                Menu_Lektion_2.Visibility = Visibility.Visible;
+                Menu_Lektion_3.Visibility = Visibility.Visible;
+                Menu_Lektion_4.Visibility = Visibility.Visible;
+                Menu_Lektion_5.Visibility = Visibility.Visible;
+                Menu_Lektion_6.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                Menu_Lektion_1.Visibility = Visibility.Hidden;
+                Menu_Lektion_2.Visibility = Visibility.Hidden;
+                Menu_Lektion_3.Visibility = Visibility.Hidden;
+                Menu_Lektion_4.Visibility = Visibility.Hidden;
+                Menu_Lektion_5.Visibility = Visibility.Hidden;
+                Menu_Lektion_6.Visibility = Visibility.Hidden;
             }
             
         }
 
-        private void MLP_Selection(object sender, RoutedEventArgs e)
+        private void tab_forward(object sender, RoutedEventArgs e)
         {
-            //if (slp == null) slp = new SLP();
-            MainFrame.SelectedIndex = 2;
-        }
-
-        private void SLP_Canvas_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            viewmodelslp.formatNet();
+            MainFrame.SelectedIndex++;
         }
 
         private void Set_En_Lang(object sender, RoutedEventArgs e)
