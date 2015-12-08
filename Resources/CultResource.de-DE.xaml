@@ -7,6 +7,7 @@
     <system:String x:Key="Uebung_Titel">Übung</system:String>
     <system:String x:Key="Extra_Titel">Extra</system:String>
     <system:String x:Key="Definition_Titel">Definition</system:String>
+    <system:String x:Key="Fehler_Titel">Fehler</system:String>
 
     <system:String x:Key="Lektion_1_Titel">Schwellenwertelement</system:String>
     <system:String x:Key="Lektion_1_Untertitel_1">Schhwellenwert</system:String>
@@ -18,6 +19,8 @@
     <system:String x:Key="Lektion_1_Untertitel_3_3">Batch-Training</system:String>
 
     <system:String x:Key="Uebung_1_Untertitel_1">AND</system:String>
+    <system:String x:Key="Uebung_1_Untertitel_1_Aufgabe">Trainieren Sie das Schwellenwertelement so, dass es die UND-Verknüpfung wiederspiegelt!</system:String>
+    <system:String x:Key="Uebung_1_Untertitel_1_Aufgabe_Detail">Sie erhalten ein vorinitialisiertes Netz und sollen die Trainingsdaten vorgeben. Probieren Sie Online- und Batch-Training!</system:String>
     <system:String x:Key="Uebung_1_Untertitel_2">OR</system:String>
 
     <system:String x:Key="Extra_1_Untertitel_1">Lineare Separierbarkeit</system:String>
@@ -28,4 +31,7 @@
     <system:String x:Key="Lektion_4_Titel">Radiale Basisfunktionen Netze</system:String>
     <system:String x:Key="Lektion_5_Titel">Selbstorganisierende Karte</system:String>
     <system:String x:Key="Lektion_6_Titel">Lernende Vektorquantisierung</system:String>
+
+    <system:String x:Key="Add_Button">Hinzufügen</system:String>
+    
 </ResourceDictionary>

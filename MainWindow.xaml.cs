@@ -25,6 +25,10 @@ namespace anne
         SLP slp;
         ViewModelSLP viewmodelslp;
 
+        Schwellenwertelement swe;
+        SchwellenwertelementVM SWEVM;
+        List<SchwellenwertelementInput> AND_Daten;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -75,6 +79,26 @@ namespace anne
             if(!(sender is MenuItem)) Menu_Visability(true);
             MainFrame.SelectedIndex=1;
         }
+
+        private void Uebung_1_Untertitel_1_Click(object sender, RoutedEventArgs e)
+        {
+            if (!(sender is MenuItem)) Menu_Visability(true);
+            Uebung_1_Untertitel_1_Init();
+            MainFrame.SelectedIndex = 6;
+        }
+
+        private void Uebung_1_Untertitel_1_Init()
+        {
+            AND_Daten = new List<SchwellenwertelementInput>();
+
+            swe = new Schwellenwertelement();
+
+            swe.Init();
+
+            SWEVM = new SchwellenwertelementVM(swe);
+
+            SWE_Canvas.DataContext = SWEVM;
+        }
         
         private void Menu_Visability(bool decision)
         {
@@ -102,6 +126,23 @@ namespace anne
         private void tab_forward(object sender, RoutedEventArgs e)
         {
             MainFrame.SelectedIndex++;
+
+            switch(MainFrame.SelectedIndex)
+            {
+                case 6: Uebung_1_Untertitel_1_Init();
+                    break;
+            }
+        }
+
+        private void tab_back(object sender, RoutedEventArgs e)
+        {
+            MainFrame.SelectedIndex--;
+
+            switch (MainFrame.SelectedIndex)
+            {
+                case 6: Uebung_1_Untertitel_1_Init();
+                    break;
+            }
         }
 
         private void Set_En_Lang(object sender, RoutedEventArgs e)
@@ -144,5 +185,33 @@ namespace anne
             Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(culture);
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(culture);
         }
+
+        private void Add_Schwellenwert_Input(object sender, RoutedEventArgs e)
+        {
+            double x1, x2, y;
+            if (!double.TryParse(SWE_X1_Input.Text, out x1)) { MessageBox.Show("ungültige Eingabe"); return; }
+            if (!double.TryParse(SWE_X2_Input.Text, out x2)) { MessageBox.Show("ungültige Eingabe"); return; }
+            if (!double.TryParse(SWE_Y_Input.Text, out y)) { MessageBox.Show("ungültige Eingabe"); return; }
+            AND_Input.Items.Add(new SchwellenwertelementInput(x1, x2, y));
+            AND_Daten.Add(new SchwellenwertelementInput(x1, x2, y));
+        }
+
+        private void Schwellenwert_AND_Training(object sender, RoutedEventArgs e)
+        {
+            if (IsOnlineAND.IsChecked == true)
+            {
+                SWEVM.Online_Training(AND_Daten);               
+            }
+            else
+            {
+
+            }
+        }
+
+        private void Schwellenwert_AND_Clear(object sender, RoutedEventArgs e)
+        {
+            SWEVM.Clear();
+        }
+
     }
 }

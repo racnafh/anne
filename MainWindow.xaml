@@ -51,7 +51,7 @@
                     </MenuItem>
                 </MenuItem>
                 <MenuItem Header="{DynamicResource Uebung_Titel}">
-                    <MenuItem Header="{DynamicResource Uebung_1_Untertitel_1}"></MenuItem>
+                    <MenuItem Header="{DynamicResource Uebung_1_Untertitel_1}" Click="Uebung_1_Untertitel_1_Click"></MenuItem>
                     <MenuItem Header="{DynamicResource Uebung_1_Untertitel_2}"></MenuItem>
                 </MenuItem>
                 <MenuItem Header="{DynamicResource Extra_Titel}">
@@ -178,7 +178,7 @@
                                 <Button Content="{DynamicResource Lektion_1_Untertitel_3_2}" Background="{x:Null}" BorderBrush="{x:Null}" Margin="70,0,0,0" HorizontalAlignment="Left" FontSize="10" FontWeight="Bold"></Button>
                                 <Button Content="{DynamicResource Lektion_1_Untertitel_3_3}" Background="{x:Null}" BorderBrush="{x:Null}" Margin="70,0,0,0" HorizontalAlignment="Left" FontSize="10" FontWeight="Bold"></Button>
                                 <Label Content="{DynamicResource Uebung_Titel}" FontSize="16" FontWeight="Bold" Foreground="#FFE4AC18" Margin="20,0,0,0"/>
-                                <Button Content="{DynamicResource Uebung_1_Untertitel_1}" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="10" FontWeight="Bold"></Button>
+                                <Button Content="{DynamicResource Uebung_1_Untertitel_1}" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="10" FontWeight="Bold" Click="Uebung_1_Untertitel_1_Click"></Button>
                                 <Button Content="{DynamicResource Uebung_1_Untertitel_2}" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="10" FontWeight="Bold"></Button>
                                 <Label Content="{DynamicResource Extra_Titel}" FontSize="16" FontWeight="Bold" Foreground="Red" Margin="20,0,0,0"/>
                                 <Button Content="{DynamicResource Extra_1_Untertitel_1}" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="10" FontWeight="Bold"></Button>
@@ -339,7 +339,6 @@
                             </GroupBox>
                             <Image Source="Resources/schwellenwert.png" />    
                         </StackPanel>
-                        
                     </Grid>
                     <Grid Grid.Row="1">
                         <Grid.ColumnDefinitions>
@@ -373,16 +372,118 @@
                     <Grid Grid.Row="0">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-                        <Label Grid.Row="0"/>
-                        <Grid Grid.Row="1">
+                        <Label Grid.Row="0" Content="{DynamicResource Uebung_1_Untertitel_1_Aufgabe}" FontWeight="Bold" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Label Grid.Row="1" Content="{DynamicResource Uebung_1_Untertitel_1_Aufgabe_Detail}" FontWeight="Bold" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Grid Grid.Row="2">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>
+                            <Grid Name="SWE_Canvas"  Grid.Column="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="4*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="4*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="3*"/>
+                                    <RowDefinition Height="2*"/>
+                                    <RowDefinition Height="3*"/>
+                                    <RowDefinition Height="2*"/>
+                                    <RowDefinition Height="3*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="2*"/>
+                                    <RowDefinition Height="1*"/>
+                                </Grid.RowDefinitions>
+                                <Image Grid.Row="2" Grid.Column="2" Source="Resources/downright.jpg" Stretch="Fill"></Image>
+                                <Image Grid.Row="4" Grid.Column="2" Source="Resources/upright.jpg" Stretch="Fill"></Image>
+                                <Image Grid.Row="3" Grid.Column="4" Source="Resources/right.jpg" Stretch="Fill"></Image>
+                                <Ellipse Fill="#FF1862E4" Stroke="Black" Grid.Column="3" Grid.Row="3"></Ellipse>
+                                <Label Grid.Row="1" Grid.Column="1" Content="{Binding X1, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+                                <Label Grid.Row="5" Grid.Column="1" Content="{Binding X2, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+                                <Label Grid.Row="3" Grid.Column="5" Content="{Binding Y, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+                                <Label Grid.Row="3" Grid.Column="3" Content="{Binding T, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+                                <Label Grid.Row="1" Grid.Column="2" Content="{Binding W1, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Bottom"></Label>
+                                <Label Grid.Row="5" Grid.Column="2" Content="{Binding W2, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Top"></Label>
+                                <Label Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" Content="{DynamicResource Fehler_Titel}" HorizontalAlignment="Right" FontWeight="Bold" FontSize="14"/>
+                                <Label Grid.Row="7" Grid.Column="3" Content="{Binding Error, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" FontWeight="Bold" FontSize="14"/>
+                            </Grid>
                             <GroupBox Grid.Column="1" Header="Optionen">
-                                
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="4*"/>
+                                        <RowDefinition Height="11*"/>
+                                        <RowDefinition Height="1*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="1*"/>
+                                            <RowDefinition Height="2*"/>
+                                            <RowDefinition Height="2*"/>
+                                            <RowDefinition Height="2*"/>
+                                            <RowDefinition Height="1*"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid Grid.Row="1">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="1*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <RadioButton Name="IsOnlineAND" Grid.Column="0" IsChecked="True" HorizontalAlignment="Center">Online-Training</RadioButton>
+                                            <RadioButton Grid.Column="1" HorizontalAlignment="Center">Batch-Training</RadioButton>
+                                        </Grid>
+                                        <Grid Grid.Row="2">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="2*"/>
+                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="2*"/>
+                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="2*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Grid.Column="0" Content="X1:" HorizontalAlignment="Center"></Label>
+                                            <TextBox Name="SWE_X1_Input" Grid.Column="1"></TextBox>
+                                            <Label Grid.Column="2" Content="X2:" HorizontalAlignment="Center"></Label>
+                                            <TextBox Name="SWE_X2_Input" Grid.Column="3"></TextBox>
+                                            <Label Grid.Column="4" Content="Y:" HorizontalAlignment="Center"></Label>
+                                            <TextBox Name="SWE_Y_Input" Grid.Column="5"></TextBox>
+                                        </Grid>
+                                        <Grid Grid.Row="3">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="1*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Button Grid.Column="1" Content="{DynamicResource Add_Button}" HorizontalAlignment="Right" Margin="0,5,0,0" Padding="4,1,5,1" Click="Add_Schwellenwert_Input"/>
+                                        </Grid>
+                                    </Grid>
+                                    <ListView Grid.Row="1" Name="AND_Input" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Visible" >
+                                        <ListView.View>
+                                            <GridView>
+                                                <GridViewColumn Header="X1" DisplayMemberBinding="{Binding X1}" Width="100"/>
+                                                <GridViewColumn Header="X2" DisplayMemberBinding="{Binding X2}" Width="100"/>
+                                                <GridViewColumn Header="Y" DisplayMemberBinding="{Binding Y}" Width="100"/>
+                                                <GridViewColumn Header=""  HeaderContainerStyle="{DynamicResource GridViewExtraStyle}"/>
+                                            </GridView>
+                                        </ListView.View>
+                                    </ListView>
+                                    <Grid Grid.Row="2">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="1*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Button Grid.Column="0" Content="Training" Background="#FF62E418" Click="Schwellenwert_AND_Training"></Button>
+                                            <Button Grid.Column="1" Content="Clear" Background="#FFE46218" Click="Schwellenwert_AND_Clear"></Button>
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
                             </GroupBox>
                         </Grid>
                     </Grid>

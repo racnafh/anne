@@ -72,6 +72,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Schwellenwertelement.cs" />
+    <Compile Include="SchwellenwertelementVM.cs" />
     <Compile Include="SLP.cs" />
     <Compile Include="ViewModelBase.cs" />
     <Compile Include="ViewModelSLP.cs" />
@@ -176,6 +177,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\schwellenwert.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\downright.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\right.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\upright.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
