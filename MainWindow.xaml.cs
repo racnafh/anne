@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -27,11 +28,16 @@ namespace anne
 
         Schwellenwertelement swe;
         SchwellenwertelementVM SWEVM;
-        List<SchwellenwertelementInput> AND_Daten;
+        ObservableCollection<SchwellenwertelementInput> Uebung_1_Daten;
+
+        int Uebung_1_SubIndex;
+        bool MenuVisibility;
 
         public MainWindow()
         {
             InitializeComponent();
+            Uebung_1_SubIndex = 0;
+            MenuVisibility = false;
         }
 
         private void Minimize_Button_Click(object sender, RoutedEventArgs e)
@@ -76,20 +82,22 @@ namespace anne
         //}
         private void Lektion_1_Untertitel_1_Click(object sender, RoutedEventArgs e)
         {
-            if(!(sender is MenuItem)) Menu_Visability(true);
+            if (!MenuVisibility) MenuVisibility = Menu_Visibility(!MenuVisibility);
             MainFrame.SelectedIndex=1;
         }
 
         private void Uebung_1_Untertitel_1_Click(object sender, RoutedEventArgs e)
         {
-            if (!(sender is MenuItem)) Menu_Visability(true);
+            if (!MenuVisibility) MenuVisibility = Menu_Visibility(!MenuVisibility);
             Uebung_1_Untertitel_1_Init();
             MainFrame.SelectedIndex = 6;
         }
 
         private void Uebung_1_Untertitel_1_Init()
         {
-            AND_Daten = new List<SchwellenwertelementInput>();
+            Uebung_1_Daten = new ObservableCollection<SchwellenwertelementInput>();
+
+            Uebung_1_Input.ItemsSource = Uebung_1_Daten;
 
             swe = new Schwellenwertelement();
 
@@ -97,10 +105,36 @@ namespace anne
 
             SWEVM = new SchwellenwertelementVM(swe);
 
+            SWEVM.ClearEvent += ClearEvent;
+
+            SWEVM.FirstLineEvent += FirstLineEvent;
+
+            SWEVM.SecondLineEvent += SecondLineEvent;
+
+            SWEVM.ThirdLineEventTrue += ThirdLineEventTrue;
+
+            SWEVM.ThirdLineEventFalse += ThirdLineEventFalse;
+
+            SWEVM.FourthLineEvent += FourthLineEvent;
+
+            SWEVM.FourthLineBatchEvent += FourthLineBatchEvent;
+
+            SWEVM.BatchEvent += BatchEvent;
+
+            SWEVM.ResetEvent += ResetEvent;
+
             SWE_Canvas.DataContext = SWEVM;
         }
+
+        private void Uebung_1_Untertitel_1_Release()
+        {
+            //Garbage Collector wird gerufen - bei arbeitslosigkeit der Anwendung....
+            Uebung_1_Daten = null;
+            swe = null;
+            SWEVM = null;
+        }
         
-        private void Menu_Visability(bool decision)
+        private bool Menu_Visibility(bool decision)
         {
             if (decision)
             {
@@ -110,6 +144,7 @@ namespace anne
                 Menu_Lektion_4.Visibility = Visibility.Visible;
                 Menu_Lektion_5.Visibility = Visibility.Visible;
                 Menu_Lektion_6.Visibility = Visibility.Visible;
+                Home_Menu.Visibility = Visibility.Visible;
             }
             else
             {
@@ -119,28 +154,84 @@ namespace anne
                 Menu_Lektion_4.Visibility = Visibility.Hidden;
                 Menu_Lektion_5.Visibility = Visibility.Hidden;
                 Menu_Lektion_6.Visibility = Visibility.Hidden;
+                Home_Menu.Visibility = Visibility.Hidden;
             }
-            
+            return !decision;
         }
 
         private void tab_forward(object sender, RoutedEventArgs e)
         {
-            MainFrame.SelectedIndex++;
-
             switch(MainFrame.SelectedIndex)
             {
-                case 6: Uebung_1_Untertitel_1_Init();
+                case 5: MainFrame.SelectedIndex++;
+                        Uebung_1_Untertitel_1_Init();
+                        Uebung_1_Aufgabe.Content = FindResource("Uebung_1_Untertitel_1_Aufgabe");
+                        Uebung_1_Aufgabe_Detail.Content = FindResource("Uebung_1_Untertitel_1_Aufgabe_Detail");
+                        Uebung_1_back.Content = FindResource("Lektion_1_Untertitel_3_3");
+                        Uebung_1_label.Content = FindResource("Uebung_1_Untertitel_1");
+                        Uebung_1_forward.Content = FindResource("Uebung_1_Untertitel_2");
+                        Uebung_1_Add_Button.Click += new RoutedEventHandler(Add_Schwellenwert_Std_AND_Input);
+                        Uebung_1_SubIndex++;
                     break;
+                case 6: if (Uebung_1_SubIndex == 1)
+                        {
+                            Uebung_1_Untertitel_1_Init();
+                            Uebung_1_Aufgabe.Content = FindResource("Uebung_1_Untertitel_2_Aufgabe");
+                            Uebung_1_Aufgabe_Detail.Content = FindResource("Uebung_1_Untertitel_2_Aufgabe_Detail");
+                            Uebung_1_back.Content = FindResource("Uebung_1_Untertitel_1");
+                            Uebung_1_label.Content = FindResource("Uebung_1_Untertitel_2");
+                            Uebung_1_forward.Content = FindResource("Extra_1_Untertitel_1");
+                            Uebung_1_Add_Button.Click -= Add_Schwellenwert_Std_AND_Input;
+                            Uebung_1_Add_Button.Click += new RoutedEventHandler(Add_Schwellenwert_Std_OR_Input);
+                            Uebung_1_SubIndex++;
+                        }
+                        else
+                        {
+                            MainFrame.SelectedIndex++;
+                            Uebung_1_Untertitel_1_Release();
+                            Uebung_1_SubIndex = 0;
+                        }
+                    break;
+                default: MainFrame.SelectedIndex++;
+                    break;
+
             }
         }
 
         private void tab_back(object sender, RoutedEventArgs e)
         {
-            MainFrame.SelectedIndex--;
-
             switch (MainFrame.SelectedIndex)
             {
-                case 6: Uebung_1_Untertitel_1_Init();
+                case 6: if (Uebung_1_SubIndex == 2)
+                        {
+                            Uebung_1_Untertitel_1_Init();
+                            Uebung_1_Aufgabe.Content = FindResource("Uebung_1_Untertitel_1_Aufgabe");
+                            Uebung_1_Aufgabe_Detail.Content = FindResource("Uebung_1_Untertitel_1_Aufgabe_Detail");
+                            Uebung_1_back.Content = FindResource("Lektion_1_Untertitel_3_3");
+                            Uebung_1_label.Content = FindResource("Uebung_1_Untertitel_1");
+                            Uebung_1_forward.Content = FindResource("Uebung_1_Untertitel_2");
+                            Uebung_1_Add_Button.Click -= Add_Schwellenwert_Std_OR_Input;
+                            Uebung_1_Add_Button.Click += new RoutedEventHandler(Add_Schwellenwert_Std_AND_Input);
+                            Uebung_1_SubIndex--;
+                        }
+                        else
+                        {
+                            MainFrame.SelectedIndex--;
+                            Uebung_1_Untertitel_1_Release();
+                            Uebung_1_SubIndex = 0;
+                        }
+                    break;
+                case 7: MainFrame.SelectedIndex--;
+                        Uebung_1_Untertitel_1_Init();
+                        Uebung_1_Aufgabe.Content = FindResource("Uebung_1_Untertitel_2_Aufgabe");
+                        Uebung_1_Aufgabe_Detail.Content = FindResource("Uebung_1_Untertitel_2_Aufgabe_Detail");
+                        Uebung_1_back.Content = FindResource("Uebung_1_Untertitel_1");
+                        Uebung_1_label.Content = FindResource("Uebung_1_Untertitel_2");
+                        Uebung_1_forward.Content = FindResource("Extra_1_Untertitel_1");
+                        Uebung_1_Add_Button.Click += new RoutedEventHandler(Add_Schwellenwert_Std_OR_Input);
+                        Uebung_1_SubIndex=2;
+                    break;
+                default: MainFrame.SelectedIndex--;
                     break;
             }
         }
@@ -192,26 +283,212 @@ namespace anne
             if (!double.TryParse(SWE_X1_Input.Text, out x1)) { MessageBox.Show("ungültige Eingabe"); return; }
             if (!double.TryParse(SWE_X2_Input.Text, out x2)) { MessageBox.Show("ungültige Eingabe"); return; }
             if (!double.TryParse(SWE_Y_Input.Text, out y)) { MessageBox.Show("ungültige Eingabe"); return; }
-            AND_Input.Items.Add(new SchwellenwertelementInput(x1, x2, y));
-            AND_Daten.Add(new SchwellenwertelementInput(x1, x2, y));
+            Uebung_1_Daten.Add(new SchwellenwertelementInput(x1, x2, y));
         }
 
-        private void Schwellenwert_AND_Training(object sender, RoutedEventArgs e)
+        private void Add_Schwellenwert_Std_AND_Input(object sender, RoutedEventArgs e)
         {
-            if (IsOnlineAND.IsChecked == true)
+            Uebung_1_Daten.Add(new SchwellenwertelementInput(0.0, 0.0, 0.0));
+            Uebung_1_Daten.Add(new SchwellenwertelementInput(1.0, 0.0, 0.0));
+            Uebung_1_Daten.Add(new SchwellenwertelementInput(0.0, 1.0, 0.0));
+            Uebung_1_Daten.Add(new SchwellenwertelementInput(1.0, 1.0, 1.0));
+        }
+
+        private void Add_Schwellenwert_Std_OR_Input(object sender, RoutedEventArgs e)
+        {
+            Uebung_1_Daten.Add(new SchwellenwertelementInput(0.0, 0.0, 0.0));
+            Uebung_1_Daten.Add(new SchwellenwertelementInput(1.0, 0.0, 1.0));
+            Uebung_1_Daten.Add(new SchwellenwertelementInput(0.0, 1.0, 1.0));
+            Uebung_1_Daten.Add(new SchwellenwertelementInput(1.0, 1.0, 1.0));
+        }
+
+        private void Schwellenwert_Training(object sender, RoutedEventArgs e)
+        {
+            if (IsOnline.IsChecked == true)
             {
-                SWEVM.Online_Training(AND_Daten);               
+                SWEVM.ErrorMax = 0.0;
+                Change_Line.Visibility = Visibility.Visible;
+                SWEVM.Online_Training(Uebung_1_Daten);               
             }
             else
             {
-
+                SWEVM.ErrorMax = 0.0;
+                Delta_Line.Visibility = Visibility.Visible;
+                SWEVM.Batch_Training(Uebung_1_Daten);
             }
         }
 
-        private void Schwellenwert_AND_Clear(object sender, RoutedEventArgs e)
+        private void Schwellenwert_Clear(object sender, RoutedEventArgs e)
         {
             SWEVM.Clear();
         }
 
+        private void ClearEvent(Object sender, EventArgs e)
+        {
+            Input_X1_Line.Visibility = Visibility.Hidden;
+            Input_X2_Line.Visibility = Visibility.Hidden;
+            Input_Y_Line.Visibility = Visibility.Hidden;
+            Entscheidung.Background = null;
+            Entscheidung.Content=String.Empty;
+            W1_Line.Background = null;
+            W2_Line.Background = null;
+            Mainball.Fill = new SolidColorBrush(Colors.Blue);
+            fourthsball.Visibility = Visibility.Hidden;
+            fifthsball.Visibility = Visibility.Hidden;
+            firstball.Visibility = Visibility.Visible;
+        }
+
+        private void ResetEvent(Object sender, EventArgs e)
+        {
+            Input_X1_Line.Visibility = Visibility.Hidden;
+            Input_X2_Line.Visibility = Visibility.Hidden;
+            Input_Y_Line.Visibility = Visibility.Hidden;
+            Entscheidung.Background = null;
+            Entscheidung.Content = String.Empty;
+            W1_Line.Background = null;
+            W2_Line.Background = null;
+            Mainball.Fill = new SolidColorBrush(Colors.Blue);
+            fourthsball.Visibility = Visibility.Hidden;
+            fifthsball.Visibility = Visibility.Hidden;
+            Change_Line.Visibility = Visibility.Hidden;
+            Delta_Line.Visibility = Visibility.Hidden;
+        }
+
+        private void FirstLineEvent(Object sender, EventArgs e)
+        {
+            Input_X1_Line.Visibility = Visibility.Visible;
+            Input_X2_Line.Visibility = Visibility.Visible;
+            firstball.Visibility = Visibility.Hidden;
+            secondball.Visibility = Visibility.Visible;
+        }
+
+        private void SecondLineEvent(Object sender, EventArgs e)
+        {
+            Input_Y_Line.Visibility = Visibility.Visible;
+            secondball.Visibility = Visibility.Hidden;
+            thirdball.Visibility = Visibility.Visible;
+        }
+
+        private void ThirdLineEventTrue(Object sender, EventArgs e)
+        {
+            Entscheidung.Background=new SolidColorBrush(Colors.Green);
+            Entscheidung.Content = FindResource("wahr");
+            thirdball.Visibility = Visibility.Hidden;
+            fourthsball.Visibility = Visibility.Visible;
+        }
+
+        private void ThirdLineEventFalse(Object sender, EventArgs e)
+        {
+            Entscheidung.Background = new SolidColorBrush(Colors.Red);
+            Entscheidung.Content = FindResource("falsch");
+            thirdball.Visibility = Visibility.Hidden;
+            fourthsball.Visibility = Visibility.Visible;
+        }
+
+        private void FourthLineEvent(Object sender, EventArgs e)
+        {
+            fourthsball.Visibility = Visibility.Hidden;
+            fifthsball.Visibility = Visibility.Visible;
+        }
+
+        private void FourthLineBatchEvent(Object sender, EventArgs e)
+        {
+            fourthsball.Visibility = Visibility.Hidden;
+            fifthsball.Visibility = Visibility.Visible;
+        }
+
+        private void BatchEvent(Object sender, EventArgs e)
+        {
+            W1_Line.Background = new SolidColorBrush(Colors.Red);
+            W2_Line.Background = new SolidColorBrush(Colors.Red);
+            Mainball.Fill = new SolidColorBrush(Colors.Red);
+        }
+
+        private void RndValue_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if(SWEVM!=null) SWEVM.RoundMax = ((Slider)sender).Value;
+        }
+
+        private void ErrorValue_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (SWEVM != null) SWEVM.ErrorMax = ((Slider)sender).Value;
+        }
+
+        private void LPValue_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (SWEVM != null) SWEVM.LP = ((Slider)sender).Value;
+        }
+
+        private void Delete_Line(object sender, RoutedEventArgs e)
+        {
+            SchwellenwertelementInput SWEI = (SchwellenwertelementInput)((Button)sender).Tag;
+            Uebung_1_Daten.Remove(SWEI);
+        }
+
+        private void Home_Menu_Click(object sender, RoutedEventArgs e)
+        {
+            switch(MainFrame.SelectedIndex)
+            {
+                case 6: Uebung_1_Untertitel_1_Release();
+                        Uebung_1_SubIndex = 0;
+                        break;
+                default:
+                    MenuVisibility = Menu_Visibility(!MenuVisibility);
+                    MainFrame.SelectedIndex = 0;
+                    break;
+            }
+        }
+    }
+
+    public class DSConverter : IMultiValueConverter
+    {
+        public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
+        {
+            return values[0].ToString() + "/" + values[1].ToString();
+        }
+
+        public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
+        {
+            return new[] { value, value };
+        }
+    }
+
+    public class ChangeConverter : IMultiValueConverter
+    {
+        public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
+        {
+            return "T: " + values[0].ToString() + " W1: " + values[1].ToString() + " W2: " + values[2].ToString();
+        }
+
+        public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
+        {
+            return new[] { value, value };
+        }
+    }
+
+    public class DeltaConverter : IMultiValueConverter
+    {
+        public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
+        {
+            return "dT: " + values[0].ToString() + " dW1: " + values[1].ToString() + " dW2: " + values[2].ToString();
+        }
+
+        public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
+        {
+            return new[] { value, value };
+        }
+    }
+
+    public class UnsetValueConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return value;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return DependencyProperty.UnsetValue;
+        }
     }
 }

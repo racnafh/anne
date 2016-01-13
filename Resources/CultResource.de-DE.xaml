@@ -7,21 +7,114 @@
     <system:String x:Key="Uebung_Titel">Übung</system:String>
     <system:String x:Key="Extra_Titel">Extra</system:String>
     <system:String x:Key="Definition_Titel">Definition</system:String>
+    <system:String x:Key="Geschichte_Titel">Geschichte</system:String>
     <system:String x:Key="Fehler_Titel">Fehler</system:String>
+    <system:String x:Key="LP_Titel">LP</system:String>
+    <system:String x:Key="Runde_Titel">Runde</system:String>
+    <system:String x:Key="Runden_Titel">Runden</system:String>
+    <system:String x:Key="Datensatz_Titel">Datensatz</system:String>
+    <system:String x:Key="Input_Titel">Input</system:String>
+    <system:String x:Key="Output_Titel">Output</system:String>
+    <system:String x:Key="Entscheidung_Titel">Entscheidung</system:String>
+    <system:String x:Key="Anpassung_Titel">Anpassung</system:String>
+    <system:String x:Key="wahr">wahr</system:String>
+    <system:String x:Key="falsch">falsch</system:String>
+    <system:String x:Key="entfernen">entfernen</system:String>
+    <system:String x:Key="BSP1">Beispiel 1</system:String>
+    <system:String x:Key="BSP2">Beispiel 2</system:String>
+    <system:String x:Key="BSP3">Beispiel 3</system:String>
+    <system:String x:Key="Add_Button">Hinzufügen</system:String>
+    <system:String x:Key="Add_Std_Button">Std.-Satz</system:String>
 
     <system:String x:Key="Lektion_1_Titel">Schwellenwertelement</system:String>
     <system:String x:Key="Lektion_1_Untertitel_1">Schhwellenwert</system:String>
     <system:String x:Key="Lektion_1_Untertitel_1_Definition">Ein Schwellenwertelement ist eine Verarbeitungseinheit für reelle Zahlen mit n Eingängen x₁,...xₙ und einem Ausgang y. Der Einheit als Ganzer ist ein Schwellwert θ und jedem Eingang xₖ ein Gewicht wₖ zugeordnet. Ein Schwellenwertelement berechnet die Funktion</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_1_Geschichte">Die Geschichte der Künstlichen Neuronalen Netze beginnt bereits in den frühen 1940er Jahren und geht zurück auf Warren McCulloch und Walter Pitts. Diese beschreiben 1943 ein Modell, das praktisch jede logische oder auch arithmetische Funktion berechnen kann. Schwellenwertelement nennt man daher auch McCulloch-Pitts-Neuronen Ein weiterer, oft für Schwellenwertelemente gebrauchter Name ist Perzeptron. Diese von Rosenblatt weiterentwickelte Verarbeitungseinheit ist jedoch etwas komplexer, weshalb wir uns ihrer in Lektion 2 und Lektion 3 annehmen.</system:String>
     <system:String x:Key="Lektion_1_Untertitel_2">Beispielfunktionen</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_2_Detail">Um die Funktionsweise von Schwellenwertelementen zu illustrieren und ihre Fähigkeiten zu verdeutlichen, betrachten wir einige einfache Beispiele.</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_2_Bsp_1_Titel">Ein Schwellenwertelement für die Konjunktion x₁ &amp; x₂.</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_2_Bsp_1_Detail">Ein Schwellenwertelement mit zwei Eingängen x₁ und x₂, denen die Gewichte w₁=3 und w₂=2 zugeordnet sind. Der Schwellenwert ist θ=4</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_2_Bsp_2_Titel">Ein Schwellenwertelement für die Implikation x₁ -> x₂.</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_2_Bsp_2_Detail">Ein Schwellenwertelement mit zwei Eingängen x₁ und x₂, denen die Gewichte w₁=2 und w₂=-2 zugeordnet sind. Der Schwellenwert ist θ=-1</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_2_Bsp_3_Titel">Schwellenwertelement für (x₁ &amp; ~x₂) | (x₁ &amp; x₃) | (~x₂ &amp; x₃).</system:String>
     <system:String x:Key="Lektion_1_Untertitel_3">Training</system:String>
     <system:String x:Key="Lektion_1_Untertitel_3_1">Fehler</system:String>
     <system:String x:Key="Lektion_1_Untertitel_3_2">Online-Training</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_2_Detail">Dieser Algorithmus wendet immer wieder die Delta-Regel an, bis die Summe der Fehler über alle Trainingsbeispiele verschwindet. Dabei erfolgt die Anpassung des Schwellenwertes und der Gewichte mit jedem Trainingsbeispiel.</system:String>
+
+    <system:String x:Key="Lektion_1_Untertitel_3_2_Code">procedure online_training (var w, var t, L, n);</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_2_Code_Line1">var y,e;</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_2_Code_Line2">begin</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_2_Code_Line3">repeat</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_2_Code_Line4">e:=0</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_2_Code_Line5">for all (x,o) € L do begin</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_2_Code_Line6">if (wx >= t) then y:=1;</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_2_Code_Line7">else y:=0;</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_2_Code_Line8">if (y != 0) then begin</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_2_Code_Line9">t := t - n(o-y);</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_2_Code_Line10">w := w + n(o-y)x;</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_2_Code_Line11">e := e + |o-y|;</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_2_Code_Line12">end;</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_2_Code_Line13">end;</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_2_Code_Line14">until (e=0)</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_2_Code_Line15">end;</system:String>
+
+    <system:String x:Key="Lektion_1_Untertitel_3_2_Kommentar_Line1">(* Ausgabe, Fehlersumme *)</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_2_Kommentar_Line4">(* initialisiere die Fehlersumme *)</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_2_Kommentar_Line5">(* durchlaufe Trainingsmuster *)</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_2_Kommentar_Line6">(* berechne die Ausgabe *)</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_2_Kommentar_Line7">(* des Schwellenwertelements *)</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_2_Kommentar_Line8">(* wenn die Ausgabe falsch ist *)</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_2_Kommentar_Line9">(* passe den Schwellwert *)</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_2_Kommentar_Line10">(* und die Gewichte an *)</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_2_Kommentar_Line11">(* summiere den Fehler *)</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_2_Kommentar_Line14">(* wiederhole die Berechnungen *)</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_2_Kommentar_Line15">(* bis der Fehler verschwindet *)</system:String>
+    
     <system:String x:Key="Lektion_1_Untertitel_3_3">Batch-Training</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Detail">In diesem Algorithmus wird die Delta-Regel in modifizierter Form angewandt. Bei einem Durchlauf der Trainingsbeispiele werden für jedes Beispiel der gleiche Schwellenwert und die gleichen Gewichte verwendet. Die bei falscher Ausgabe berechneten Änderungen werden in den Variablen deltat und deltaw summiert. Erst nach Bearbeitung aller Trainingsbeispiele werden die Gewichte und der Schwellenwert mit Hilfe dieser Variablen angepasst.</system:String>
+
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Code">procedure batch_training (var w, var t, L, n);</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line1">var y,e,</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line2">deltat,deltaw;</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line3">begin</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line4">repeat</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line5">e:=0; deltat:=0; deltaw:=0;</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line6">for all (x,o) € L do begin</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line7">if (wx >= t) then y:=1;</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line8">else y:=0;</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line9">if (y != 0) then begin</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line10">deltat := deltat - n(o-y);</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line11">deltaw := deltaw + n(o-y)x;</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line12">e := e + |o-y|;</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line13">end;</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line14">end;</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line15">t:=t+deltat;</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line16">w:=w+deltaw;</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line17">until (e=0)</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line18">end;</system:String>
+
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Kommentar_Line1">(* Ausgabe, Fehlersumme *)</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Kommentar_Line2">(* summierte Änderungen *)</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Kommentar_Line5">(* Initialisierungen *)</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Kommentar_Line6">(* durchlaufe Trainingsmuster *)</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Kommentar_Line7">(* berechne die Ausgabe *)</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Kommentar_Line8">(* des Schwellenwertelements *)</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Kommentar_Line9">(* wenn die Ausgabe falsch ist *)</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Kommentar_Line10">(* summiere die Schwellenwert- *)</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Kommentar_Line11">(* und die Gewichtsänderungen *)</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Kommentar_Line12">(* summiere die Fehler *)</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Kommentar_Line15">(* passe den Schwellenwert *)</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Kommentar_Line16">(* und die Gewichte an *)</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Kommentar_Line17">(* wiederhole die Berechnungen *)</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Kommentar_Line18">(* bis der Fehler verschwindet *)</system:String>
 
     <system:String x:Key="Uebung_1_Untertitel_1">AND</system:String>
     <system:String x:Key="Uebung_1_Untertitel_1_Aufgabe">Trainieren Sie das Schwellenwertelement so, dass es die UND-Verknüpfung wiederspiegelt!</system:String>
     <system:String x:Key="Uebung_1_Untertitel_1_Aufgabe_Detail">Sie erhalten ein vorinitialisiertes Netz und sollen die Trainingsdaten vorgeben. Probieren Sie Online- und Batch-Training!</system:String>
     <system:String x:Key="Uebung_1_Untertitel_2">OR</system:String>
+    <system:String x:Key="Uebung_1_Untertitel_2_Aufgabe">Trainieren Sie das Schwellenwertelement so, dass es die OR-Verknüpfung wiederspiegelt!</system:String>
+    <system:String x:Key="Uebung_1_Untertitel_2_Aufgabe_Detail">Sie erhalten ein vorinitialisiertes Netz und sollen die Trainingsdaten vorgeben. Probieren Sie Online- und Batch-Training!</system:String>
 
     <system:String x:Key="Extra_1_Untertitel_1">Lineare Separierbarkeit</system:String>
     <system:String x:Key="Extra_1_Untertitel_2">XOR</system:String>
@@ -31,7 +124,5 @@
     <system:String x:Key="Lektion_4_Titel">Radiale Basisfunktionen Netze</system:String>
     <system:String x:Key="Lektion_5_Titel">Selbstorganisierende Karte</system:String>
     <system:String x:Key="Lektion_6_Titel">Lernende Vektorquantisierung</system:String>
-
-    <system:String x:Key="Add_Button">Hinzufügen</system:String>
     
 </ResourceDictionary>

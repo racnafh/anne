@@ -1,5 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:l="clr-namespace:anne">
     <Style x:Key="GridViewExtraStyle" TargetType="{x:Type GridViewColumnHeader}">
         <Setter Property="Background" Value="{x:Null}"/>
         <Setter Property="Foreground" Value="{x:Null}"/>
@@ -85,4 +86,9 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+    <l:DSConverter x:Key="dsconverter" />
+    <l:UnsetValueConverter x:Key="UnsetValueConverter" />
+    <l:ChangeConverter x:Key="changeconverter" />
+    <l:DeltaConverter x:Key="deltaconverter" />
 </ResourceDictionary>

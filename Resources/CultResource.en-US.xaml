@@ -7,17 +7,113 @@
     <system:String x:Key="Uebung_Titel">Exercise</system:String>
     <system:String x:Key="Extra_Titel">Extra</system:String>
     <system:String x:Key="Definition_Titel">Definition</system:String>
+    <system:String x:Key="Geschichte_Titel">History</system:String>
+    <system:String x:Key="Fehler_Titel">Error</system:String>
+    <system:String x:Key="LP_Titel">LP</system:String>
+    <system:String x:Key="Runde_Titel">Round</system:String>
+    <system:String x:Key="Runden_Titel">Rounds</system:String>
+    <system:String x:Key="Datensatz_Titel">Dataset</system:String>
+    <system:String x:Key="Input_Titel">Input</system:String>
+    <system:String x:Key="Output_Titel">Output</system:String>
+    <system:String x:Key="Entscheidung_Titel">Decision</system:String>
+    <system:String x:Key="Anpassung_Titel">Adjustment</system:String>
+    <system:String x:Key="wahr">true</system:String>
+    <system:String x:Key="falsch">false</system:String>
+    <system:String x:Key="entfernen">delete</system:String>
+    <system:String x:Key="BSP1">Example 1</system:String>
+    <system:String x:Key="BSP2">Example 2</system:String>
+    <system:String x:Key="BSP3">Example 3</system:String>
+    <system:String x:Key="Add_Button">Add</system:String>
+    <system:String x:Key="Add_Std_Button">Stamdard set</system:String>
 
     <system:String x:Key="Lektion_1_Titel">Treshold Element</system:String>
     <system:String x:Key="Lektion_1_Untertitel_1">Treshold</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_1_Definition">A treshold element is a processing unit for real numbers with n inputs x₁,...xₙ and a output y. There is a treshold figure θ dedicated to the whole unit and to each input xₖ a weight wₖ. A treshold element calculates the function</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_1_Geschichte">The history of artificial neuronal network already started in the early 1940´s and was established by Warren McCulloch and Walter Pitts. In 1943, they described a model that is able to calculate each logical or arithmetical function. Therefore one also calls the treshold element McCulloch-Pitts-Neurons. Another often used alias for treshold elemts is Perceptron. This processing unit further developped by Rosenblatt is a bit more complex, thus we will attend to that in lesson 2 and 3.</system:String>
     <system:String x:Key="Lektion_1_Untertitel_2">Example Functions</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_2_Detail">To illustrate the functionality of treshold elemets and to highlight their skills, we´ll have a closer look on some simple examples.</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_2_Bsp_1_Titel">A treshold element for the conjunctionx₁ &amp; x₂.</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_2_Bsp_1_Detail">A treshold element with two inputs x₁ and x₂, to which the weights w₁=3 and w₂=2 are assigned. The treshold element is θ=4</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_2_Bsp_2_Titel">A treshold element for the implication x₁ -> x₂.</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_2_Bsp_2_Detail">A treshold element with two inputs x₁ and x₂, to which the weights w₁=2 and w₂=-2 are assigned. The treshold element is θ=-1</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_2_Bsp_3_Titel">A treshold element for (x₁ &amp; ~x₂) | (x₁ &amp; x₃) | (~x₂ &amp; x₃).</system:String>
     <system:String x:Key="Lektion_1_Untertitel_3">Training</system:String>
     <system:String x:Key="Lektion_1_Untertitel_3_1">Error</system:String>
     <system:String x:Key="Lektion_1_Untertitel_3_2">Online-Training</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_2_Detail">This algorithm always uses the delta-rule until the sum of errors for all training examples vanishes. Thereby the adaption of the treshold element and the weights follows with every training example.</system:String>
+
+    <system:String x:Key="Lektion_1_Untertitel_3_2_Code">procedure online_training (var w, var t, L, n);</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_2_Code_Line1">var y,e;</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_2_Code_Line2">begin</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_2_Code_Line3">repeat</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_2_Code_Line4">e:=0</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_2_Code_Line5">for all (x,o) € L do begin</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_2_Code_Line6">if (wx >= t) then y:=1;</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_2_Code_Line7">else y:=0;</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_2_Code_Line8">if (y != 0) then begin</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_2_Code_Line9">t := t - n(o-y);</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_2_Code_Line10">w := w + n(o-y)x;</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_2_Code_Line11">e := e + |o-y|;</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_2_Code_Line12">end;</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_2_Code_Line13">end;</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_2_Code_Line14">until (e=0)</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_2_Code_Line15">end;</system:String>
+
+    <system:String x:Key="Lektion_1_Untertitel_3_2_Kommentar_Line1">(* Output, Error amount *)</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_2_Kommentar_Line4">(* initialise the error amount *)</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_2_Kommentar_Line5">(* pass through the training examples *)</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_2_Kommentar_Line6">(* calculate the output *)</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_2_Kommentar_Line7">(* of the treshold element *)</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_2_Kommentar_Line8">(* if the output is false *)</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_2_Kommentar_Line9">(* adjust the treshold element *)</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_2_Kommentar_Line10">(* and the weights *)</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_2_Kommentar_Line11">(* summarize the errors *)</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_2_Kommentar_Line14">(* repeat the calculation *)</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_2_Kommentar_Line15">(* until the error vanishes *)</system:String>
+
     <system:String x:Key="Lektion_1_Untertitel_3_3">Batch-Training</system:String>
+    
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Code">procedure batch_training (var w, var t, L, n);</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line1">var y,e,</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line2">deltat,deltaw;</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line3">begin</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line4">repeat</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line5">e:=0; deltat:=0; deltaw:=0;</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line6">for all (x,o) € L do begin</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line7">if (wx >= t) then y:=1;</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line8">else y:=0;</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line9">if (y != 0) then begin</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line10">deltat := deltat - n(o-y);</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line11">deltaw := deltaw + n(o-y)x;</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line12">e := e + |o-y|;</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line13">end;</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line14">end;</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line15">t:=t+deltat;</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line16">w:=w+deltaw;</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line17">until (e=0)</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line18">end;</system:String>
+
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Kommentar_Line1">(* Output, Error amount *)</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Kommentar_Line2">(* summarized changes *)</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Kommentar_Line5">(* Initializations *)</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Kommentar_Line6">(* pass through the training examples *)</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Kommentar_Line7">(* calculate the output *)</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Kommentar_Line8">(* of the treshold element *)</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Kommentar_Line9">(* if the output is false *)</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Kommentar_Line10">(* summarize the treshold element- *)</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Kommentar_Line11">(* and the changes of the weights *)</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Kommentar_Line12">(* summarize the errors *)</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Kommentar_Line15">(* adjust the treshold element *)</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Kommentar_Line16">(* and the weights *)</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Kommentar_Line17">(* repeat the calculation *)</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Kommentar_Line18">(* until the error vanishes *)</system:String>
 
     <system:String x:Key="Uebung_1_Untertitel_1">AND</system:String>
+    <system:String x:Key="Uebung_1_Untertitel_1_Aufgabe">Train the treshold element in a way, that it reflects the UND-link!</system:String>
+    <system:String x:Key="Uebung_1_Untertitel_1_Aufgabe_Detail">You receive a preinitialised network. Your task is to predetermine the training data. Try Online- and Batch-Training!</system:String>
     <system:String x:Key="Uebung_1_Untertitel_2">OR</system:String>
+    <system:String x:Key="Uebung_1_Untertitel_2_Aufgabe">Train the treshold element in a way, that it reflects the OR-link!</system:String>
+    <system:String x:Key="Uebung_1_Untertitel_2_Aufgabe_Detail">You receive a preinitialised network. Your task is to predetermine the training data. Try Online- and Batch-Training!</system:String>
 
     <system:String x:Key="Extra_1_Untertitel_1">Linear Separability</system:String>
     <system:String x:Key="Extra_1_Untertitel_2">XOR</system:String>
@@ -27,4 +123,5 @@
     <system:String x:Key="Lektion_4_Titel">Radial Basisfunction Net</system:String>
     <system:String x:Key="Lektion_5_Titel">Selforganizing Map</system:String>
     <system:String x:Key="Lektion_6_Titel">Learning Vector Quantization</system:String>
+ 
 </ResourceDictionary>

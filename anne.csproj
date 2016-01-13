@@ -187,6 +187,24 @@
   <ItemGroup>
     <Resource Include="Resources\upright.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\pitts.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\mcculloch.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\schwellenwert_bsp_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\schwellenwert_bsp_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\schwellenwert_bsp_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\schwellenwert_neg.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

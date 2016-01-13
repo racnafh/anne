@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:anne"
         mc:Ignorable="d"
         Title="Artificial Neural Network Educator" Height="768" Width="1024">
@@ -129,7 +130,7 @@
                     <MenuItem Header="Lineare Separierbarkeit"></MenuItem>
                 </MenuItem>
             </MenuItem>
-            <MenuItem Width="20" Height="20" Grid.Column="7" Click="Set_En_Lang" BorderBrush="{x:Null}" Visibility="Hidden">
+            <MenuItem Name="Home_Menu" Width="20" Height="20" Grid.Column="7" Click="Home_Menu_Click" BorderBrush="{x:Null}" Visibility="Hidden">
                 <MenuItem.Background>
                     <ImageBrush ImageSource="Resources/Home.png" Stretch="Uniform"/>
                 </MenuItem.Background>
@@ -315,30 +316,53 @@
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
-                        <StackPanel Grid.Column="0">
-                            <GroupBox Header="{DynamicResource Definition_Titel}" BorderBrush="Red" BorderThickness="2">
-                                <StackPanel>
-                                    <TextBlock Text="{DynamicResource Lektion_1_Untertitel_1_Definition}" TextWrapping="Wrap" Margin="10,10,10,0"/>
-                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" >
-                                        <Label Content="y = " Padding="0" VerticalAlignment="Center" BorderThickness="0,7,0,0"/>
-                                        <Label Content="{}{" Padding="0" FontSize="60" VerticalAlignment="Center" BorderThickness="0,0,0,5"/>
-                                        <StackPanel VerticalAlignment="Center">
-                                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" >
-                                                <Label Content="1, falls " Padding="0" VerticalAlignment="Center" BorderThickness="0,0,0,2"/>
-                                                <StackPanel VerticalAlignment="Center">
-                                                    <Label Content=" n" Padding="0" VerticalAlignment="Center" FontSize="8" HorizontalAlignment="Center"/>
-                                                    <Label Content="&#8721;" Padding="0" VerticalAlignment="Center" FontSize="16" HorizontalAlignment="Center" Margin="0,0,0,6"/>
-                                                    <Label Content=" k=1" Padding="0" VerticalAlignment="Center" FontSize="8" HorizontalAlignment="Center"/>
-                                                </StackPanel>
-                                                <Label Content="wₖxₖ ≥ θ," Padding="0" VerticalAlignment="Center" BorderThickness="0,0,0,2"/>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom">
+                            <Image  Source="Resources/schwell.png" Margin="160,0"/>
+                            <TextBlock Text="{DynamicResource Lektion_1_Titel}" FontSize="36" FontWeight="Bold" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                        <GroupBox Grid.Column="0" Grid.Row="1" Header="{DynamicResource Geschichte_Titel}" BorderBrush="Red" BorderThickness="2" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Grid.Column="0" Source="Resources/mcculloch.jpg" Stretch="None" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                                    <Image Grid.Column="1" Source="Resources/pitts.jpg" Stretch="None" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                </Grid>
+                                <TextBlock Grid.Row="1" Text="{DynamicResource Lektion_1_Untertitel_1_Geschichte}" TextWrapping="Wrap" Margin="10,10,10,0"/>
+                            </Grid>
+                        </GroupBox>
+                        <GroupBox Grid.Column="1" Grid.Row="0" Header="{DynamicResource Definition_Titel}" BorderBrush="Red" BorderThickness="2" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+                            <StackPanel>
+                                <TextBlock Text="{DynamicResource Lektion_1_Untertitel_1_Definition}" TextWrapping="Wrap" Margin="10,10,10,0"/>
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                                    <Label Content="y = " Padding="0" VerticalAlignment="Center" BorderThickness="0,7,0,0"/>
+                                    <Label Content="{}{" Padding="0" FontSize="60" VerticalAlignment="Center" BorderThickness="0,0,0,5"/>
+                                    <StackPanel VerticalAlignment="Center">
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" >
+                                            <Label Content="1, falls " Padding="0" VerticalAlignment="Center" BorderThickness="0,0,0,2"/>
+                                            <StackPanel VerticalAlignment="Center">
+                                                <Label Content=" n" Padding="0" VerticalAlignment="Center" FontSize="8" HorizontalAlignment="Center"/>
+                                                <Label Content="&#8721;" Padding="0" VerticalAlignment="Center" FontSize="16" HorizontalAlignment="Center" Margin="0,0,0,6"/>
+                                                <Label Content=" k=1" Padding="0" VerticalAlignment="Center" FontSize="8" HorizontalAlignment="Center"/>
                                             </StackPanel>
-                                            <Label Content="0, sonst." Padding="0" VerticalAlignment="Center"/>
+                                            <Label Content="wₖxₖ ≥ θ," Padding="0" VerticalAlignment="Center" BorderThickness="0,0,0,2"/>
                                         </StackPanel>
+                                        <Label Content="0, sonst." Padding="0" VerticalAlignment="Center"/>
                                     </StackPanel>
                                 </StackPanel>
-                            </GroupBox>
-                            <Image Source="Resources/schwellenwert.png" />    
-                        </StackPanel>
+                            </StackPanel>
+                        </GroupBox>
+                        <Image Grid.Column="1" Grid.Row="1" Source="Resources/schwellenwert.png" />    
                     </Grid>
                     <Grid Grid.Row="1">
                         <Grid.ColumnDefinitions>
@@ -352,16 +376,253 @@
                 </Grid>
             </TabItem>
             <TabItem Visibility="Collapsed">
-                <Label Content="3.Content goes here..." />
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Content="{DynamicResource Lektion_1_Untertitel_2}"  FontWeight="Bold" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Label Grid.Row="1" Content="{DynamicResource Lektion_1_Untertitel_2_Detail}" FontWeight="Bold" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0">
+                                <GroupBox Header="{DynamicResource BSP1}" BorderBrush="Red" BorderThickness="2" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+                                    <StackPanel>
+                                        <Label Content="{DynamicResource Lektion_1_Untertitel_2_Bsp_1_Titel}" Margin="5,0,0,0"/>
+                                        <TextBlock Text="{DynamicResource Lektion_1_Untertitel_2_Bsp_1_Detail}" TextWrapping="Wrap" Margin="10,0,10,0"/>
+                                    </StackPanel>
+                                </GroupBox>
+                                <Image Source="Resources/schwellenwert_bsp_1.png"/>
+                                <ListView HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridView.Columns>
+                                                <GridViewColumn Header="x₁" DisplayMemberBinding="{Binding [0]}"/>
+                                                <GridViewColumn Header="x₂" DisplayMemberBinding="{Binding [1]}"/>
+                                                <GridViewColumn Header="3x₁+2x₂" DisplayMemberBinding="{Binding [2]}"/>
+                                                <GridViewColumn Header="y" DisplayMemberBinding="{Binding [3]}"/>
+                                            </GridView.Columns>
+                                        </GridView>
+                                    </ListView.View>
+                                    <ListViewItem>
+                                        <x:Array Type="{x:Type system:String}">
+                                            <system:String>0</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>0</system:String>
+                                        </x:Array>
+                                    </ListViewItem>
+                                    <ListViewItem>
+                                        <x:Array Type="{x:Type system:String}">
+                                            <system:String>1</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>3</system:String>
+                                            <system:String>0</system:String>
+                                        </x:Array>
+                                    </ListViewItem>
+                                    <ListViewItem>
+                                        <x:Array Type="{x:Type system:String}">
+                                            <system:String>0</system:String>
+                                            <system:String>1</system:String>
+                                            <system:String>2</system:String>
+                                            <system:String>0</system:String>
+                                        </x:Array>
+                                    </ListViewItem>
+                                    <ListViewItem>
+                                        <x:Array Type="{x:Type system:String}">
+                                            <system:String>1</system:String>
+                                            <system:String>1</system:String>
+                                            <system:String>5</system:String>
+                                            <system:String>1</system:String>
+                                        </x:Array>
+                                    </ListViewItem>
+                                </ListView>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1">
+                                <GroupBox Header="{DynamicResource BSP2}" BorderBrush="Red" BorderThickness="2" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+                                    <StackPanel>
+                                        <Label Content="{DynamicResource Lektion_1_Untertitel_2_Bsp_2_Titel}" Margin="5,0,0,0"/>
+                                        <TextBlock Text="{DynamicResource Lektion_1_Untertitel_2_Bsp_2_Detail}" TextWrapping="Wrap" Margin="10,0,10,0"/>
+                                    </StackPanel>
+                                </GroupBox>
+                                <Image Source="Resources/schwellenwert_bsp_2.png"/>
+                                <ListView HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridView.Columns>
+                                                <GridViewColumn Header="x₁" DisplayMemberBinding="{Binding [0]}"/>
+                                                <GridViewColumn Header="x₂" DisplayMemberBinding="{Binding [1]}"/>
+                                                <GridViewColumn Header="2x₁-2x₂" DisplayMemberBinding="{Binding [2]}"/>
+                                                <GridViewColumn Header="y" DisplayMemberBinding="{Binding [3]}"/>
+                                            </GridView.Columns>
+                                        </GridView>
+                                    </ListView.View>
+                                    <ListViewItem>
+                                        <x:Array Type="{x:Type system:String}">
+                                            <system:String>0</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>0</system:String>
+                                        </x:Array>
+                                    </ListViewItem>
+                                    <ListViewItem>
+                                        <x:Array Type="{x:Type system:String}">
+                                            <system:String>1</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>2</system:String>
+                                            <system:String>1</system:String>
+                                        </x:Array>
+                                    </ListViewItem>
+                                    <ListViewItem>
+                                        <x:Array Type="{x:Type system:String}">
+                                            <system:String>0</system:String>
+                                            <system:String>1</system:String>
+                                            <system:String>  -2</system:String>
+                                            <system:String>0</system:String>
+                                        </x:Array>
+                                    </ListViewItem>
+                                    <ListViewItem>
+                                        <x:Array Type="{x:Type system:String}">
+                                            <system:String>1</system:String>
+                                            <system:String>1</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>1</system:String>
+                                        </x:Array>
+                                    </ListViewItem>
+                                </ListView>
+                            </StackPanel>
+                            <StackPanel Grid.Column="2">
+                                <GroupBox Header="{DynamicResource BSP3}" BorderBrush="Red" BorderThickness="2" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+                                    <Label Content="{DynamicResource Lektion_1_Untertitel_2_Bsp_3_Titel}" Margin="5,0,0,0"/>
+                                </GroupBox>
+                                <Image Source="Resources/schwellenwert_bsp_3.png"/>
+                                <ListView HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridView.Columns>
+                                                <GridViewColumn Header="x₁" DisplayMemberBinding="{Binding [0]}"/>
+                                                <GridViewColumn Header="x₂" DisplayMemberBinding="{Binding [1]}"/>
+                                                <GridViewColumn Header="x₃" DisplayMemberBinding="{Binding [2]}"/>
+                                                <GridViewColumn Header="&#8721;ᵢ wᵢxᵢ" DisplayMemberBinding="{Binding [3]}"/>
+                                                <GridViewColumn Header="y" DisplayMemberBinding="{Binding [4]}"/>
+                                            </GridView.Columns>
+                                        </GridView>
+                                    </ListView.View>
+                                    <ListViewItem>
+                                        <x:Array Type="{x:Type system:String}">
+                                            <system:String>0</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>0</system:String>
+                                        </x:Array>
+                                    </ListViewItem>
+                                    <ListViewItem>
+                                        <x:Array Type="{x:Type system:String}">
+                                            <system:String>1</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>2</system:String>
+                                            <system:String>1</system:String>
+                                        </x:Array>
+                                    </ListViewItem>
+                                    <ListViewItem>
+                                        <x:Array Type="{x:Type system:String}">
+                                            <system:String>0</system:String>
+                                            <system:String>1</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>-2</system:String>
+                                            <system:String>0</system:String>
+                                        </x:Array>
+                                    </ListViewItem>
+                                    <ListViewItem>
+                                        <x:Array Type="{x:Type system:String}">
+                                            <system:String>1</system:String>
+                                            <system:String>1</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>0</system:String>
+                                        </x:Array>
+                                    </ListViewItem>
+                                    <ListViewItem>
+                                        <x:Array Type="{x:Type system:String}">
+                                            <system:String>0</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>1</system:String>
+                                            <system:String>2</system:String>
+                                            <system:String>1</system:String>
+                                        </x:Array>
+                                    </ListViewItem>
+                                    <ListViewItem>
+                                        <x:Array Type="{x:Type system:String}">
+                                            <system:String>1</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>1</system:String>
+                                            <system:String>4</system:String>
+                                            <system:String>1</system:String>
+                                        </x:Array>
+                                    </ListViewItem>
+                                    <ListViewItem>
+                                        <x:Array Type="{x:Type system:String}">
+                                            <system:String>0</system:String>
+                                            <system:String>1</system:String>
+                                            <system:String>1</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>0</system:String>
+                                        </x:Array>
+                                    </ListViewItem>
+                                    <ListViewItem>
+                                        <x:Array Type="{x:Type system:String}">
+                                            <system:String>1</system:String>
+                                            <system:String>1</system:String>
+                                            <system:String>1</system:String>
+                                            <system:String>2</system:String>
+                                            <system:String>1</system:String>
+                                        </x:Array>
+                                    </ListViewItem>
+                                </ListView>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_1}" FontSize="14" Background="{x:Null}" BorderThickness="0,2,3,0" Click="tab_back"></Button>
+                        <Label Grid.Column="1" Content="{DynamicResource Lektion_1_Untertitel_2}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"></Label>
+                        <Button Grid.Column="2" Content="{DynamicResource Lektion_1_Untertitel_3_1}" FontSize="14" Background="{x:Null}" BorderThickness="3,2,0,0" Click="tab_forward"></Button>
+                    </Grid>
+                </Grid>
             </TabItem>
             <TabItem Visibility="Collapsed">
-                <Label Content="4.Content goes here..." />
-            </TabItem>
-            <TabItem Visibility="Collapsed">
-                <Label Content="4.Content goes here..." />
-            </TabItem>
-            <TabItem Visibility="Collapsed">
-                <Label Content="4.Content goes here..." />
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_2}" FontSize="14" Background="{x:Null}" BorderThickness="0,2,3,0" Click="tab_back"></Button>
+                        <Label Grid.Column="1" Content="{DynamicResource Lektion_1_Untertitel_3_1}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"></Label>
+                        <Button Grid.Column="2" Content="{DynamicResource Lektion_1_Untertitel_3_2}" FontSize="14" Background="{x:Null}" BorderThickness="3,2,0,0" Click="tab_forward"></Button>
+                    </Grid>
+                </Grid>
             </TabItem>
             <TabItem Visibility="Collapsed">
                 <Grid>
@@ -375,8 +636,598 @@
                             <RowDefinition Height="50"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-                        <Label Grid.Row="0" Content="{DynamicResource Uebung_1_Untertitel_1_Aufgabe}" FontWeight="Bold" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        <Label Grid.Row="1" Content="{DynamicResource Uebung_1_Untertitel_1_Aufgabe_Detail}" FontWeight="Bold" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Label Grid.Row="0" Content="{DynamicResource Lektion_1_Untertitel_3_2}"  FontWeight="Bold" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Row="1" Text="{DynamicResource Lektion_1_Untertitel_3_2_Detail}" FontWeight="Bold" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <GroupBox Grid.Column="0" Header="{DynamicResource Lektion_1_Untertitel_3_2_Code}" BorderBrush="Red" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="2">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Grid.Column="0">
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_2_Code_Line1}"/>
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_2_Code_Line2}"/>
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_2_Code_Line3}" Margin="10,0,0,0"/>
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_2_Code_Line4}" Margin="20,0,0,0"/>
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_2_Code_Line5}" Margin="20,0,0,0"/>
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_2_Code_Line6}" Margin="30,0,0,0"/>
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_2_Code_Line7}" Margin="95,0,0,0"/>
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_2_Code_Line8}" Margin="30,0,0,0"/>
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_2_Code_Line9}" Margin="40,0,0,0"/>
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_2_Code_Line10}" Margin="40,0,0,0"/>
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_2_Code_Line11}" Margin="40,0,0,0"/>
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_2_Code_Line12}" Margin="30,0,0,0"/>
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_2_Code_Line13}" Margin="20,0,0,0"/>
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_2_Code_Line14}" Margin="10,0,0,0"/>
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_2_Code_Line15}"/>
+                                    </StackPanel>
+                                    <StackPanel Grid.Column="1">
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_2_Kommentar_Line1}"/>
+                                        <Label Grid.Column="0" Content=" "/>
+                                        <Label Grid.Column="0" Content=" "/>
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_2_Kommentar_Line4}"/>
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_2_Kommentar_Line5}"/>
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_2_Kommentar_Line6}"/>
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_2_Kommentar_Line7}"/>
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_2_Kommentar_Line8}"/>
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_2_Kommentar_Line9}"/>
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_2_Kommentar_Line10}"/>
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_2_Kommentar_Line11}"/>
+                                        <Label Grid.Column="0" Content=" "/>
+                                        <Label Grid.Column="0" Content=" "/>
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_2_Kommentar_Line14}"/>
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_2_Kommentar_Line15}"/>
+                                    </StackPanel>
+                                </Grid>
+                            </GroupBox>
+                            <StackPanel Grid.Column="1">
+                                <Image Source="Resources/schwellenwert_neg.png"/>
+                                <ListView HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridView.Columns>
+                                                <GridViewColumn Header="Epoche" DisplayMemberBinding="{Binding [0]}"/>
+                                                <GridViewColumn Header="x" DisplayMemberBinding="{Binding [1]}"/>
+                                                <GridViewColumn Header="o" DisplayMemberBinding="{Binding [2]}"/>
+                                                <GridViewColumn Header="xw" DisplayMemberBinding="{Binding [3]}"/>
+                                                <GridViewColumn Header="y" DisplayMemberBinding="{Binding [4]}"/>
+                                                <GridViewColumn Header="e" DisplayMemberBinding="{Binding [5]}"/>
+                                                <GridViewColumn Header="Δθ" DisplayMemberBinding="{Binding [6]}"/>
+                                                <GridViewColumn Header="Δw" DisplayMemberBinding="{Binding [7]}"/>
+                                                <GridViewColumn Header="θ" DisplayMemberBinding="{Binding [8]}"/>
+                                                <GridViewColumn Header="w" DisplayMemberBinding="{Binding [9]}"/>
+                                            </GridView.Columns>
+                                        </GridView>
+                                    </ListView.View>
+                                    <ListViewItem>
+                                        <x:Array Type="{x:Type system:String}">
+                                            <x:Static Member="system:String.Empty" />
+                                            <x:Static Member="system:String.Empty" />
+                                            <x:Static Member="system:String.Empty" />
+                                            <x:Static Member="system:String.Empty" />
+                                            <x:Static Member="system:String.Empty" />
+                                            <x:Static Member="system:String.Empty" />
+                                            <x:Static Member="system:String.Empty" />
+                                            <x:Static Member="system:String.Empty" />
+                                            <system:String>1.5</system:String>
+                                            <system:String>2</system:String>
+                                        </x:Array>
+                                    </ListViewItem>
+                                    <ListViewItem>
+                                        <x:Array Type="{x:Type system:String}">
+                                            <system:String>1</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>1</system:String>
+                                            <system:String>-1.5</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>1</system:String>
+                                            <system:String>-1</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>0.5</system:String>
+                                            <system:String>2</system:String>
+                                        </x:Array>
+                                    </ListViewItem>
+                                    <ListViewItem>
+                                        <x:Array Type="{x:Type system:String}">
+                                            <x:Static Member="system:String.Empty" />
+                                            <system:String>1</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>1.5</system:String>
+                                            <system:String>1</system:String>
+                                            <system:String>-1</system:String>
+                                            <system:String>1</system:String>
+                                            <system:String>1</system:String>
+                                            <system:String>1.5</system:String>
+                                            <system:String>1</system:String>
+                                        </x:Array>
+                                    </ListViewItem>
+                                    <ListViewItem>
+                                        <x:Array Type="{x:Type system:String}">
+                                            <system:String>2</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>1</system:String>
+                                            <system:String>-1.5</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>1</system:String>
+                                            <system:String>-1</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>0.5</system:String>
+                                            <system:String>1</system:String>
+                                        </x:Array>
+                                    </ListViewItem>
+                                    <ListViewItem>
+                                        <x:Array Type="{x:Type system:String}">
+                                            <x:Static Member="system:String.Empty" />
+                                            <system:String>1</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>0.5</system:String>
+                                            <system:String>1</system:String>
+                                            <system:String>-1</system:String>
+                                            <system:String>1</system:String>
+                                            <system:String>-1</system:String>
+                                            <system:String>1.5</system:String>
+                                            <system:String>0</system:String>
+                                        </x:Array>
+                                    </ListViewItem>
+                                    <ListViewItem>
+                                        <x:Array Type="{x:Type system:String}">
+                                            <system:String>3</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>1</system:String>
+                                            <system:String>-1.5</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>1</system:String>
+                                            <system:String>-1</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>0.5</system:String>
+                                            <system:String>0</system:String>
+                                        </x:Array>
+                                    </ListViewItem>
+                                    <ListViewItem>
+                                        <x:Array Type="{x:Type system:String}">
+                                            <x:Static Member="system:String.Empty" />
+                                            <system:String>1</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>0.5</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>0.5</system:String>
+                                            <system:String>0</system:String>
+                                        </x:Array>
+                                    </ListViewItem>
+                                    <ListViewItem>
+                                        <x:Array Type="{x:Type system:String}">
+                                            <system:String>4</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>1</system:String>
+                                            <system:String>-0.5</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>1</system:String>
+                                            <system:String>-1</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>-0.5</system:String>
+                                            <system:String>0</system:String>
+                                        </x:Array>
+                                    </ListViewItem>
+                                    <ListViewItem>
+                                        <x:Array Type="{x:Type system:String}">
+                                            <x:Static Member="system:String.Empty" />
+                                            <system:String>1</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>0.5</system:String>
+                                            <system:String>1</system:String>
+                                            <system:String>-1</system:String>
+                                            <system:String>1</system:String>
+                                            <system:String>-1</system:String>
+                                            <system:String>0.5</system:String>
+                                            <system:String>-1</system:String>
+                                        </x:Array>
+                                    </ListViewItem>
+                                    <ListViewItem>
+                                        <x:Array Type="{x:Type system:String}">
+                                            <system:String>5</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>1</system:String>
+                                            <system:String>-0.5</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>1</system:String>
+                                            <system:String>-1</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>-0.5</system:String>
+                                            <system:String>-1</system:String>
+                                        </x:Array>
+                                    </ListViewItem>
+                                    <ListViewItem>
+                                        <x:Array Type="{x:Type system:String}">
+                                            <x:Static Member="system:String.Empty" />
+                                            <system:String>1</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>-0.5</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>-0.5</system:String>
+                                            <system:String>-1</system:String>
+                                        </x:Array>
+                                    </ListViewItem>
+                                    <ListViewItem>
+                                        <x:Array Type="{x:Type system:String}">
+                                            <system:String>6</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>1</system:String>
+                                            <system:String>0.5</system:String>
+                                            <system:String>1</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>-0.5</system:String>
+                                            <system:String>-1</system:String>
+                                        </x:Array>
+                                    </ListViewItem>
+                                    <ListViewItem>
+                                        <x:Array Type="{x:Type system:String}">
+                                            <x:Static Member="system:String.Empty" />
+                                            <system:String>1</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>-0.5</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>-0.5</system:String>
+                                            <system:String>-1</system:String>
+                                        </x:Array>
+                                    </ListViewItem>
+                                </ListView>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_1}" FontSize="14" Background="{x:Null}" BorderThickness="0,2,3,0" Click="tab_back"></Button>
+                        <Label Grid.Column="1" Content="{DynamicResource Lektion_1_Untertitel_3_2}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"></Label>
+                        <Button Grid.Column="2" Content="{DynamicResource Lektion_1_Untertitel_3_3}" FontSize="14" Background="{x:Null}" BorderThickness="3,2,0,0" Click="tab_forward"></Button>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Visibility="Collapsed">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Content="{DynamicResource Lektion_1_Untertitel_3_3}"  FontWeight="Bold" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Row="1" Text="{DynamicResource Lektion_1_Untertitel_3_3_Detail}" FontWeight="Bold" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <GroupBox Grid.Column="0" Header="{DynamicResource Lektion_1_Untertitel_3_3_Code}" BorderBrush="Red" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="2">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Grid.Column="0">
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_3_Code_Line1}" Height="25"/>
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_3_Code_Line2}" Margin="20,0,0,0" Height="25"/>
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_3_Code_Line3}" Height="25"/>
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_3_Code_Line4}" Margin="10,0,0,0" Height="25"/>
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_3_Code_Line5}" Margin="20,0,0,0" Height="25"/>
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_3_Code_Line6}" Margin="20,0,0,0" Height="25"/>
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_3_Code_Line7}" Margin="30,0,0,0" Height="25"/>
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_3_Code_Line8}" Margin="105,0,0,0" Height="25"/>
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_3_Code_Line9}" Margin="30,0,0,0" Height="25"/>
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_3_Code_Line10}" Margin="40,0,0,0" Height="25"/>
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_3_Code_Line11}" Margin="40,0,0,0" Height="25"/>
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_3_Code_Line12}" Margin="40,0,0,0" Height="25"/>
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_3_Code_Line13}" Margin="30,0,0,0" Height="25"/>
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_3_Code_Line14}" Margin="20,0,0,0" Height="25"/>
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_3_Code_Line15}" Margin="20,0,0,0" Height="25"/>
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_3_Code_Line16}" Margin="20,0,0,0" Height="25"/>
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_3_Code_Line17}" Margin="10,0,0,0" Height="25"/>
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_3_Code_Line18}" Height="25"/>
+                                    </StackPanel>
+                                    <StackPanel Grid.Column="1">
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_3_Kommentar_Line1}" Height="25"/>
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_3_Kommentar_Line2}" Height="25"/>
+                                        <Label Grid.Column="0" Content=" " Height="25"/>
+                                        <Label Grid.Column="0" Content=" " Height="25"/>
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_3_Kommentar_Line5}" Height="25"/>
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_3_Kommentar_Line6}" Height="25"/>
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_3_Kommentar_Line7}" Height="25"/>
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_3_Kommentar_Line8}" Height="25"/>
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_3_Kommentar_Line9}" Height="25"/>
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_3_Kommentar_Line10}" Height="25"/>
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_3_Kommentar_Line11}" Height="25"/>
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_3_Kommentar_Line12}" Height="25"/>
+                                        <Label Grid.Column="0" Content=" " Height="25"/>
+                                        <Label Grid.Column="0" Content=" " Height="25"/>
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_3_Kommentar_Line15}" Height="25"/>
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_3_Kommentar_Line16}" Height="25"/>
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_3_Kommentar_Line17}" Height="25"/>
+                                        <Label Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_3_Kommentar_Line18}" Height="25"/>
+                                    </StackPanel>
+                                </Grid>
+                            </GroupBox>
+                            <StackPanel Grid.Column="1">
+                                <Image Source="Resources/schwellenwert_neg.png"/>
+                                <ListView HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridView.Columns>
+                                                <GridViewColumn Header="Epoche" DisplayMemberBinding="{Binding [0]}"/>
+                                                <GridViewColumn Header="x" DisplayMemberBinding="{Binding [1]}"/>
+                                                <GridViewColumn Header="o" DisplayMemberBinding="{Binding [2]}"/>
+                                                <GridViewColumn Header="xw" DisplayMemberBinding="{Binding [3]}"/>
+                                                <GridViewColumn Header="y" DisplayMemberBinding="{Binding [4]}"/>
+                                                <GridViewColumn Header="e" DisplayMemberBinding="{Binding [5]}"/>
+                                                <GridViewColumn Header="Δθ" DisplayMemberBinding="{Binding [6]}"/>
+                                                <GridViewColumn Header="Δw" DisplayMemberBinding="{Binding [7]}"/>
+                                                <GridViewColumn Header="θ" DisplayMemberBinding="{Binding [8]}"/>
+                                                <GridViewColumn Header="w" DisplayMemberBinding="{Binding [9]}"/>
+                                            </GridView.Columns>
+                                        </GridView>
+                                    </ListView.View>
+                                    <ListViewItem>
+                                        <x:Array Type="{x:Type system:String}">
+                                            <x:Static Member="system:String.Empty" />
+                                            <x:Static Member="system:String.Empty" />
+                                            <x:Static Member="system:String.Empty" />
+                                            <x:Static Member="system:String.Empty" />
+                                            <x:Static Member="system:String.Empty" />
+                                            <x:Static Member="system:String.Empty" />
+                                            <x:Static Member="system:String.Empty" />
+                                            <x:Static Member="system:String.Empty" />
+                                            <system:String>1.5</system:String>
+                                            <system:String>2</system:String>
+                                        </x:Array>
+                                    </ListViewItem>
+                                    <ListViewItem>
+                                        <x:Array Type="{x:Type system:String}">
+                                            <system:String>1</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>1</system:String>
+                                            <system:String>-1.5</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>1</system:String>
+                                            <system:String>-1</system:String>
+                                            <system:String>0</system:String>
+                                            <x:Static Member="system:String.Empty" />
+                                            <x:Static Member="system:String.Empty" />
+                                        </x:Array>
+                                    </ListViewItem>
+                                    <ListViewItem>
+                                        <x:Array Type="{x:Type system:String}">
+                                            <x:Static Member="system:String.Empty" />
+                                            <system:String>1</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>0.5</system:String>
+                                            <system:String>1</system:String>
+                                            <system:String>-1</system:String>
+                                            <system:String>1</system:String>
+                                            <system:String>-1</system:String>
+                                            <system:String>1.5</system:String>
+                                            <system:String>1</system:String>
+                                        </x:Array>
+                                    </ListViewItem>
+                                    <ListViewItem>
+                                        <x:Array Type="{x:Type system:String}">
+                                            <system:String>2</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>1</system:String>
+                                            <system:String>-1.5</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>1</system:String>
+                                            <system:String>-1</system:String>
+                                            <system:String>0</system:String>
+                                            <x:Static Member="system:String.Empty" />
+                                            <x:Static Member="system:String.Empty" />
+                                        </x:Array>
+                                    </ListViewItem>
+                                    <ListViewItem>
+                                        <x:Array Type="{x:Type system:String}">
+                                            <x:Static Member="system:String.Empty" />
+                                            <system:String>1</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>-0.5</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>0.5</system:String>
+                                            <system:String>1</system:String>
+                                        </x:Array>
+                                    </ListViewItem>
+                                    <ListViewItem>
+                                        <x:Array Type="{x:Type system:String}">
+                                            <system:String>3</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>1</system:String>
+                                            <system:String>-0.5</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>1</system:String>
+                                            <system:String>-1</system:String>
+                                            <system:String>0</system:String>
+                                            <x:Static Member="system:String.Empty" />
+                                            <x:Static Member="system:String.Empty" />
+                                        </x:Array>
+                                    </ListViewItem>
+                                    <ListViewItem>
+                                        <x:Array Type="{x:Type system:String}">
+                                            <x:Static Member="system:String.Empty" />
+                                            <system:String>1</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>0.5</system:String>
+                                            <system:String>1</system:String>
+                                            <system:String>-1</system:String>
+                                            <system:String>1</system:String>
+                                            <system:String>-1</system:String>
+                                            <system:String>0.5</system:String>
+                                            <system:String>0</system:String>
+                                        </x:Array>
+                                    </ListViewItem>
+                                    <ListViewItem>
+                                        <x:Array Type="{x:Type system:String}">
+                                            <system:String>4</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>1</system:String>
+                                            <system:String>-0.5</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>1</system:String>
+                                            <system:String>-1</system:String>
+                                            <system:String>0</system:String>
+                                            <x:Static Member="system:String.Empty" />
+                                            <x:Static Member="system:String.Empty" />
+                                        </x:Array>
+                                    </ListViewItem>
+                                    <ListViewItem>
+                                        <x:Array Type="{x:Type system:String}">
+                                            <x:Static Member="system:String.Empty" />
+                                            <system:String>1</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>-0.5</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>-0.5</system:String>
+                                            <system:String>0</system:String>
+                                        </x:Array>
+                                    </ListViewItem>
+                                    <ListViewItem>
+                                        <x:Array Type="{x:Type system:String}">
+                                            <system:String>5</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>1</system:String>
+                                            <system:String>0.5</system:String>
+                                            <system:String>1</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>0</system:String>
+                                            <x:Static Member="system:String.Empty" />
+                                            <x:Static Member="system:String.Empty" />
+                                        </x:Array>
+                                    </ListViewItem>
+                                    <ListViewItem>
+                                        <x:Array Type="{x:Type system:String}">
+                                            <x:Static Member="system:String.Empty" />
+                                            <system:String>1</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>0.5</system:String>
+                                            <system:String>1</system:String>
+                                            <system:String>-1</system:String>
+                                            <system:String>1</system:String>
+                                            <system:String>-1</system:String>
+                                            <system:String>0.5</system:String>
+                                            <system:String>-1</system:String>
+                                        </x:Array>
+                                    </ListViewItem>
+                                    <ListViewItem>
+                                        <x:Array Type="{x:Type system:String}">
+                                            <system:String>6</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>1</system:String>
+                                            <system:String>-0.5</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>1</system:String>
+                                            <system:String>-1</system:String>
+                                            <system:String>0</system:String>
+                                            <x:Static Member="system:String.Empty" />
+                                            <x:Static Member="system:String.Empty" />
+                                        </x:Array>
+                                    </ListViewItem>
+                                    <ListViewItem>
+                                        <x:Array Type="{x:Type system:String}">
+                                            <x:Static Member="system:String.Empty" />
+                                            <system:String>1</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>-1.5</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>-0.5</system:String>
+                                            <system:String>-1</system:String>
+                                        </x:Array>
+                                    </ListViewItem>
+                                    <ListViewItem>
+                                        <x:Array Type="{x:Type system:String}">
+                                            <system:String>7</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>1</system:String>
+                                            <system:String>0.5</system:String>
+                                            <system:String>1</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>0</system:String>
+                                            <x:Static Member="system:String.Empty" />
+                                            <x:Static Member="system:String.Empty" />
+                                        </x:Array>
+                                    </ListViewItem>
+                                    <ListViewItem>
+                                        <x:Array Type="{x:Type system:String}">
+                                            <x:Static Member="system:String.Empty" />
+                                            <system:String>1</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>-0.5</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>0</system:String>
+                                            <system:String>-0.5</system:String>
+                                            <system:String>-1</system:String>
+                                        </x:Array>
+                                    </ListViewItem>
+                                </ListView>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_2}" FontSize="14" Background="{x:Null}" BorderThickness="0,2,3,0" Click="tab_back"></Button>
+                        <Label Grid.Column="1" Content="{DynamicResource Lektion_1_Untertitel_3_3}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"></Label>
+                        <Button Grid.Column="2" Content="{DynamicResource Uebung_1_Untertitel_1}" FontSize="14" Background="{x:Null}" BorderThickness="3,2,0,0" Click="tab_forward"></Button>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Visibility="Collapsed">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Label Name="Uebung_1_Aufgabe" Grid.Row="0" FontWeight="Bold" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Label Name="Uebung_1_Aufgabe_Detail" Grid.Row="1" FontWeight="Bold" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         <Grid Grid.Row="2">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="2*"/>
@@ -386,41 +1237,91 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="1*"/>
                                     <ColumnDefinition Width="3*"/>
-                                    <ColumnDefinition Width="4*"/>
                                     <ColumnDefinition Width="3*"/>
-                                    <ColumnDefinition Width="4*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="3*"/>
                                     <ColumnDefinition Width="3*"/>
                                     <ColumnDefinition Width="1*"/>
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
+                                    <RowDefinition Height="2*"/>
+                                    <RowDefinition Height="2*"/>
+                                    <RowDefinition Height="3*"/>
+                                    <RowDefinition Height="2*"/>
+                                    <RowDefinition Height="2*"/>
                                     <RowDefinition Height="1*"/>
-                                    <RowDefinition Height="3*"/>
-                                    <RowDefinition Height="2*"/>
-                                    <RowDefinition Height="3*"/>
-                                    <RowDefinition Height="2*"/>
-                                    <RowDefinition Height="3*"/>
                                     <RowDefinition Height="1*"/>
-                                    <RowDefinition Height="2*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
                                     <RowDefinition Height="1*"/>
                                 </Grid.RowDefinitions>
-                                <Image Grid.Row="2" Grid.Column="2" Source="Resources/downright.jpg" Stretch="Fill"></Image>
-                                <Image Grid.Row="4" Grid.Column="2" Source="Resources/upright.jpg" Stretch="Fill"></Image>
-                                <Image Grid.Row="3" Grid.Column="4" Source="Resources/right.jpg" Stretch="Fill"></Image>
-                                <Ellipse Fill="#FF1862E4" Stroke="Black" Grid.Column="3" Grid.Row="3"></Ellipse>
-                                <Label Grid.Row="1" Grid.Column="1" Content="{Binding X1, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
-                                <Label Grid.Row="5" Grid.Column="1" Content="{Binding X2, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
-                                <Label Grid.Row="3" Grid.Column="5" Content="{Binding Y, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
-                                <Label Grid.Row="3" Grid.Column="3" Content="{Binding T, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
-                                <Label Grid.Row="1" Grid.Column="2" Content="{Binding W1, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Bottom"></Label>
-                                <Label Grid.Row="5" Grid.Column="2" Content="{Binding W2, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Top"></Label>
-                                <Label Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" Content="{DynamicResource Fehler_Titel}" HorizontalAlignment="Right" FontWeight="Bold" FontSize="14"/>
-                                <Label Grid.Row="7" Grid.Column="3" Content="{Binding Error, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" FontWeight="Bold" FontSize="14"/>
+                                <Image Grid.Row="1" Grid.Column="2" Source="Resources/downright.jpg" Stretch="Fill"></Image>
+                                <Image Grid.Row="3" Grid.Column="2" Source="Resources/upright.jpg" Stretch="Fill"></Image>
+                                <Image Grid.Row="2" Grid.Column="4" Source="Resources/right.jpg" Stretch="Fill"></Image>
+                                <Ellipse Name="Mainball" Fill="#FF1862E4" Stroke="Black" Grid.Column="3" Grid.Row="2"></Ellipse>
+                                <Label Grid.Row="0" Grid.Column="1" Content="{Binding X1, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+                                <Label Grid.Row="4" Grid.Column="1" Content="{Binding X2, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+                                <Label Grid.Row="2" Grid.Column="5" Content="{Binding Y, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+                                <Label Grid.Row="2" Grid.Column="3" Content="{Binding T, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+                                <Label Name="W1_Line" Grid.Row="0" Grid.Column="2" Content="{Binding W1, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Bottom"></Label>
+                                <Label Name="W2_Line" Grid.Row="4" Grid.Column="2" Content="{Binding W2, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Top"></Label>
+                                <Ellipse Name="firstball" Grid.Row="5" Grid.Column="0" Fill="Black" Width="8" Height="8" Visibility="Hidden"/>
+                                <Label Grid.Row="5" Grid.Column="1" Content="{DynamicResource Datensatz_Titel}" HorizontalAlignment="Right" FontWeight="Bold" FontSize="14"/>
+                                <Label Grid.Row="5" Grid.Column="4" Content="{DynamicResource Runde_Titel}" HorizontalAlignment="Right" FontWeight="Bold" FontSize="14"/>
+                                <Ellipse Name="secondball" Grid.Row="6" Grid.Column="0" Fill="Black" Width="8" Height="8" Visibility="Hidden"/>
+                                <Label Grid.Row="6" Grid.Column="1" Content="{DynamicResource Input_Titel}" HorizontalAlignment="Right" FontWeight="Bold" FontSize="14"/>
+                                <Ellipse Name="thirdball" Grid.Row="7" Grid.Column="0" Fill="Black" Width="8" Height="8" Visibility="Hidden"/>
+                                <Label Grid.Row="7" Grid.Column="1" Content="{DynamicResource Output_Titel}" HorizontalAlignment="Right" FontWeight="Bold" FontSize="14"/>
+                                <Ellipse Name="fourthsball" Grid.Row="8" Grid.Column="0" Fill="Black" Width="8" Height="8" Visibility="Hidden"/>
+                                <Label Grid.Row="8" Grid.Column="1" Content="{DynamicResource Entscheidung_Titel}" HorizontalAlignment="Right" FontWeight="Bold" FontSize="14"/>
+                                <Ellipse Name="fifthsball" Grid.Row="9" Grid.Column="0" Fill="Black" Width="8" Height="8" Visibility="Hidden"/>
+                                <Label Grid.Row="9" Grid.Column="1" Content="{DynamicResource Anpassung_Titel}" HorizontalAlignment="Right" FontWeight="Bold" FontSize="14"/>
+                                <Label Grid.Row="5" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <Label.Content>
+                                        <MultiBinding  Converter="{StaticResource dsconverter}">
+                                            <Binding Path="Round" UpdateSourceTrigger="PropertyChanged" Converter="{StaticResource UnsetValueConverter}"/>
+                                            <Binding Path="RoundMax" UpdateSourceTrigger="PropertyChanged" Converter="{StaticResource UnsetValueConverter}"/>
+                                        </MultiBinding>
+                                    </Label.Content>
+                                </Label>
+                                <Label Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2" Name="DS_Line" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                                    <Label.Content>
+                                        <MultiBinding  Converter="{StaticResource dsconverter}">
+                                            <Binding Path="DS" UpdateSourceTrigger="PropertyChanged" Converter="{StaticResource UnsetValueConverter}"/>
+                                            <Binding Path="DSMAX" UpdateSourceTrigger="PropertyChanged" Converter="{StaticResource UnsetValueConverter}"/>
+                                        </MultiBinding>
+                                    </Label.Content>
+                                </Label>
+                                <Label Grid.Row="9" Grid.Column="2" Grid.ColumnSpan="2" Name="Change_Line" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden" >
+                                    <Label.Content>
+                                        <MultiBinding  Converter="{StaticResource changeconverter}">
+                                            <Binding Path="T" UpdateSourceTrigger="PropertyChanged" Converter="{StaticResource UnsetValueConverter}"/>
+                                            <Binding Path="W1" UpdateSourceTrigger="PropertyChanged" Converter="{StaticResource UnsetValueConverter}"/>
+                                            <Binding Path="W2" UpdateSourceTrigger="PropertyChanged" Converter="{StaticResource UnsetValueConverter}"/>
+                                        </MultiBinding>
+                                    </Label.Content>
+                                </Label>
+                                <Label Grid.Row="9" Grid.Column="2" Grid.ColumnSpan="2" Name="Delta_Line" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden" >
+                                    <Label.Content>
+                                        <MultiBinding  Converter="{StaticResource deltaconverter}">
+                                            <Binding Path="DeltaT" UpdateSourceTrigger="PropertyChanged" Converter="{StaticResource UnsetValueConverter}"/>
+                                            <Binding Path="DeltaW1" UpdateSourceTrigger="PropertyChanged" Converter="{StaticResource UnsetValueConverter}"/>
+                                            <Binding Path="DeltaW2" UpdateSourceTrigger="PropertyChanged" Converter="{StaticResource UnsetValueConverter}"/>
+                                        </MultiBinding>
+                                    </Label.Content>
+                                </Label>
+                                <Label Grid.Row="6" Grid.Column="2" Name="Input_X1_Line" Content="{Binding X1, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"></Label>
+                                <Label Grid.Row="6" Grid.Column="3" Name="Input_X2_Line" Content="{Binding X2, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"></Label>
+                                <Label Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="2" Name="Input_Y_Line" Content="{Binding Y, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"></Label>
+                                <Label Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="2" Name="Entscheidung" HorizontalAlignment="Center"></Label>
+                                <Label Grid.Row="8" Grid.Column="4" Content="{DynamicResource Fehler_Titel}" HorizontalAlignment="Right" FontWeight="Bold" FontSize="14"/>
+                                <Label Grid.Row="8" Grid.Column="5" Content="{Binding Error, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
                             </Grid>
                             <GroupBox Grid.Column="1" Header="Optionen">
                                 <Grid>
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="4*"/>
-                                        <RowDefinition Height="11*"/>
+                                        <RowDefinition Height="8*"/>
+                                        <RowDefinition Height="7*"/>
                                         <RowDefinition Height="1*"/>
                                     </Grid.RowDefinitions>
                                     <Grid>
@@ -429,17 +1330,39 @@
                                             <RowDefinition Height="2*"/>
                                             <RowDefinition Height="2*"/>
                                             <RowDefinition Height="2*"/>
+                                            <RowDefinition Height="2*"/>
+                                            <RowDefinition Height="2*"/>
                                             <RowDefinition Height="1*"/>
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="1">
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="4*"/>
                                                 <ColumnDefinition Width="1*"/>
                                             </Grid.ColumnDefinitions>
-                                            <RadioButton Name="IsOnlineAND" Grid.Column="0" IsChecked="True" HorizontalAlignment="Center">Online-Training</RadioButton>
-                                            <RadioButton Grid.Column="1" HorizontalAlignment="Center">Batch-Training</RadioButton>
+                                            <Label Grid.Column="0" Content="{DynamicResource Runden_Titel}" VerticalAlignment="Center" HorizontalAlignment="Center"></Label>
+                                            <Slider Grid.Column="1" Maximum="10" IsSnapToTickEnabled="True" Name="RndValue" Minimum="2" SmallChange="1" Value="5" ValueChanged="RndValue_ValueChanged" VerticalAlignment="Center" />
+                                            <TextBox Grid.Column="2" Text="{Binding ElementName=RndValue, Path=Value, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Right" Width="30" VerticalAlignment="Center" />
                                         </Grid>
                                         <Grid Grid.Row="2">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="4*"/>
+                                                <ColumnDefinition Width="1*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Grid.Column="0" Content="{DynamicResource LP_Titel}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                            <Slider Grid.Column="1" Maximum="0.50" IsSnapToTickEnabled="True" Name="ErrorValue" Minimum="0" SmallChange="0.05" Value="0.15"  VerticalAlignment="Center" ValueChanged="LPValue_ValueChanged" Ticks="0.05 0.10 0.15 0.20 0.25 0.30 0.35 0.40 0.45" />
+                                            <TextBox Grid.Column="2" Text="{Binding ElementName=ErrorValue, Path=Value, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Right" Width="30" VerticalAlignment="Center" />
+                                        </Grid>
+                                        <Grid Grid.Row="3">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="1*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <RadioButton Name="IsOnline" Grid.Column="0" IsChecked="True" HorizontalAlignment="Center">Online-Training</RadioButton>
+                                            <RadioButton Grid.Column="1" HorizontalAlignment="Center">Batch-Training</RadioButton>
+                                        </Grid>
+                                        <Grid Grid.Row="4">
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="1*"/>
                                                 <ColumnDefinition Width="2*"/>
@@ -455,32 +1378,59 @@
                                             <Label Grid.Column="4" Content="Y:" HorizontalAlignment="Center"></Label>
                                             <TextBox Name="SWE_Y_Input" Grid.Column="5"></TextBox>
                                         </Grid>
-                                        <Grid Grid.Row="3">
+                                        <Grid Grid.Row="5">
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="2*"/>
                                                 <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="2*"/>
+                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="2*"/>
                                             </Grid.ColumnDefinitions>
-                                            <Button Grid.Column="1" Content="{DynamicResource Add_Button}" HorizontalAlignment="Right" Margin="0,5,0,0" Padding="4,1,5,1" Click="Add_Schwellenwert_Input"/>
+                                            <Button Name="Uebung_1_Add_Button" Grid.Column="3" Content="{DynamicResource Add_Std_Button}" Margin="0,5,0,0"/>
+                                            <Button Grid.Column="5" Content="{DynamicResource Add_Button}" Margin="0,5,0,0" Click="Add_Schwellenwert_Input"/>
                                         </Grid>
                                     </Grid>
-                                    <ListView Grid.Row="1" Name="AND_Input" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Visible" >
-                                        <ListView.View>
-                                            <GridView>
-                                                <GridViewColumn Header="X1" DisplayMemberBinding="{Binding X1}" Width="100"/>
-                                                <GridViewColumn Header="X2" DisplayMemberBinding="{Binding X2}" Width="100"/>
-                                                <GridViewColumn Header="Y" DisplayMemberBinding="{Binding Y}" Width="100"/>
-                                                <GridViewColumn Header=""  HeaderContainerStyle="{DynamicResource GridViewExtraStyle}"/>
-                                            </GridView>
-                                        </ListView.View>
-                                    </ListView>
+                                    <DataGrid Grid.Row="1" Name="Uebung_1_Input" AlternatingRowBackground="BlanchedAlmond" AutoGenerateColumns="False">
+                                        <DataGrid.Columns>
+                                            <DataGridTemplateColumn Header="X1" Width="50">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBox Text="{Binding X1}" BorderBrush="{x:Null}" Background="{x:Null}" />
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                            <DataGridTemplateColumn Header="X2" Width="50">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBox Text="{Binding X2}" BorderBrush="{x:Null}" Background="{x:Null}" />
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                            <DataGridTemplateColumn Header="Y" Width="50">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBox Text="{Binding Y}" BorderBrush="{x:Null}" Background="{x:Null}" />
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                            <DataGridTemplateColumn Header="{DynamicResource entfernen}" Width="100">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <Button Content="X" Tag="{Binding}" Click="Delete_Line" HorizontalAlignment="Center"/>
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                        </DataGrid.Columns>
+                                    </DataGrid>
                                     <Grid Grid.Row="2">
                                         <Grid>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="1*"/>
                                                 <ColumnDefinition Width="1*"/>
                                             </Grid.ColumnDefinitions>
-                                            <Button Grid.Column="0" Content="Training" Background="#FF62E418" Click="Schwellenwert_AND_Training"></Button>
-                                            <Button Grid.Column="1" Content="Clear" Background="#FFE46218" Click="Schwellenwert_AND_Clear"></Button>
+                                            <Button Grid.Column="0" Content="Training" Background="#FF62E418" Click="Schwellenwert_Training"></Button>
+                                            <Button Grid.Column="1" Content="Clear" Background="#FFE46218" Click="Schwellenwert_Clear"></Button>
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -493,9 +1443,27 @@
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
-                        <Button Grid.Column="0" Content="{DynamicResource Lektion_1_Untertitel_3_3}" FontSize="14" Background="{x:Null}" BorderThickness="0,2,3,0" Click="tab_back"></Button>
-                        <Label Grid.Column="1" Content="{DynamicResource Uebung_1_Untertitel_1}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"></Label>
-                        <Button Grid.Column="2" Content="{DynamicResource Uebung_1_Untertitel_2}" FontSize="14" Background="{x:Null}" BorderThickness="3,2,0,0" Click="tab_forward"></Button>
+                        <Button Name="Uebung_1_back" Grid.Column="0" FontSize="14" Background="{x:Null}" BorderThickness="0,2,3,0" Click="tab_back"></Button>
+                        <Label Name="Uebung_1_label" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"></Label>
+                        <Button Name="Uebung_1_forward" Grid.Column="2" FontSize="14" Background="{x:Null}" BorderThickness="3,2,0,0" Click="tab_forward"></Button>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Visibility="Collapsed">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0" Content="{DynamicResource Uebung_1_Untertitel_2}" FontSize="14" Background="{x:Null}" BorderThickness="0,2,3,0" Click="tab_back"></Button>
+                        <Label Grid.Column="1" Content="{DynamicResource Extra_1_Untertitel_1}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"></Label>
+                        <Button Grid.Column="2" Content="{DynamicResource Extra_1_Untertitel_2}" FontSize="14" Background="{x:Null}" BorderThickness="3,2,0,0" Click="tab_forward"></Button>
                     </Grid>
                 </Grid>
             </TabItem>
