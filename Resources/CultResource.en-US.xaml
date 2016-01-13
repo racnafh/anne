@@ -119,6 +119,12 @@
     <system:String x:Key="Extra_1_Untertitel_2">XOR</system:String>
     
     <system:String x:Key="Lektion_2_Titel">Single Layer Perceptron</system:String>
+    <system:String x:Key="Lektion_2_Untertitel_1">Structure</system:String>
+    <system:String x:Key="Lektion_2_Untertitel_2">Learning Rules</system:String>
+    <system:String x:Key="Uebung_2_Untertitel_1">XOR</system:String>
+    <system:String x:Key="Uebung_2_Untertitel_2">Pattern</system:String>
+    <system:String x:Key="Extra_2_Untertitel_1">Bias</system:String>
+
     <system:String x:Key="Lektion_3_Titel">Multi Layer Perceptron</system:String>
     <system:String x:Key="Lektion_4_Titel">Radial Basisfunction Net</system:String>
     <system:String x:Key="Lektion_5_Titel">Selforganizing Map</system:String>

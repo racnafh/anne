@@ -86,11 +86,60 @@ namespace anne
             MainFrame.SelectedIndex=1;
         }
 
+        private void Lektion_1_Untertitel_2_Click(object sender, RoutedEventArgs e)
+        {
+            if (!MenuVisibility) MenuVisibility = Menu_Visibility(!MenuVisibility);
+            MainFrame.SelectedIndex = 2;
+        }
+
+        private void Lektion_1_Untertitel_3_1_Click(object sender, RoutedEventArgs e)
+        {
+            if (!MenuVisibility) MenuVisibility = Menu_Visibility(!MenuVisibility);
+            MainFrame.SelectedIndex = 3;
+        }
+
+        private void Lektion_1_Untertitel_3_2_Click(object sender, RoutedEventArgs e)
+        {
+            if (!MenuVisibility) MenuVisibility = Menu_Visibility(!MenuVisibility);
+            MainFrame.SelectedIndex = 4;
+        }
+
+        private void Lektion_1_Untertitel_3_3_Click(object sender, RoutedEventArgs e)
+        {
+            if (!MenuVisibility) MenuVisibility = Menu_Visibility(!MenuVisibility);
+            MainFrame.SelectedIndex = 5;
+        }
+
         private void Uebung_1_Untertitel_1_Click(object sender, RoutedEventArgs e)
         {
             if (!MenuVisibility) MenuVisibility = Menu_Visibility(!MenuVisibility);
             Uebung_1_Untertitel_1_Init();
+            Uebung_1_Aufgabe.Content = FindResource("Uebung_1_Untertitel_1_Aufgabe");
+            Uebung_1_Aufgabe_Detail.Content = FindResource("Uebung_1_Untertitel_1_Aufgabe_Detail");
+            Uebung_1_back.Content = FindResource("Lektion_1_Untertitel_3_3");
+            Uebung_1_label.Content = FindResource("Uebung_1_Untertitel_1");
+            Uebung_1_forward.Content = FindResource("Uebung_1_Untertitel_2");
+            Uebung_1_Add_Button.Click -= Add_Schwellenwert_Std_OR_Input;
+            Uebung_1_Add_Button.Click += new RoutedEventHandler(Add_Schwellenwert_Std_AND_Input);
+            Uebung_1_SubIndex = 1;
             MainFrame.SelectedIndex = 6;
+            
+        }
+
+        private void Uebung_1_Untertitel_2_Click(object sender, RoutedEventArgs e)
+        {
+            if (!MenuVisibility) MenuVisibility = Menu_Visibility(!MenuVisibility);
+            Uebung_1_Untertitel_1_Init();
+            Uebung_1_Aufgabe.Content = FindResource("Uebung_1_Untertitel_2_Aufgabe");
+            Uebung_1_Aufgabe_Detail.Content = FindResource("Uebung_1_Untertitel_2_Aufgabe_Detail");
+            Uebung_1_back.Content = FindResource("Uebung_1_Untertitel_1");
+            Uebung_1_label.Content = FindResource("Uebung_1_Untertitel_2");
+            Uebung_1_forward.Content = FindResource("Extra_1_Untertitel_1");
+            Uebung_1_Add_Button.Click -= Add_Schwellenwert_Std_AND_Input;
+            Uebung_1_Add_Button.Click += new RoutedEventHandler(Add_Schwellenwert_Std_OR_Input);
+            Uebung_1_SubIndex = 2;
+            MainFrame.SelectedIndex = 6;
+            
         }
 
         private void Uebung_1_Untertitel_1_Init()
@@ -156,7 +205,7 @@ namespace anne
                 Menu_Lektion_6.Visibility = Visibility.Hidden;
                 Home_Menu.Visibility = Visibility.Hidden;
             }
-            return !decision;
+            return decision;
         }
 
         private void tab_forward(object sender, RoutedEventArgs e)
@@ -431,7 +480,9 @@ namespace anne
             {
                 case 6: Uebung_1_Untertitel_1_Release();
                         Uebung_1_SubIndex = 0;
-                        break;
+                        MenuVisibility = Menu_Visibility(!MenuVisibility);
+                        MainFrame.SelectedIndex = 0;
+                    break;
                 default:
                     MenuVisibility = Menu_Visibility(!MenuVisibility);
                     MainFrame.SelectedIndex = 0;

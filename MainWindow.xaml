@@ -44,16 +44,16 @@
             <MenuItem Name="Menu_Lektion_1"  Header="{DynamicResource Lektion_1_Titel}" Visibility="Hidden">
                 <MenuItem Header="{DynamicResource Lektion_Titel}">
                     <MenuItem Header="{DynamicResource Lektion_1_Untertitel_1}" Click="Lektion_1_Untertitel_1_Click"></MenuItem>
-                    <MenuItem Header="{DynamicResource Lektion_1_Untertitel_2}"></MenuItem>
+                    <MenuItem Header="{DynamicResource Lektion_1_Untertitel_2}" Click="Lektion_1_Untertitel_2_Click">></MenuItem>
                     <MenuItem Header="{DynamicResource Lektion_1_Untertitel_3}">
-                        <MenuItem Header="{DynamicResource Lektion_1_Untertitel_3_1}"></MenuItem>
-                        <MenuItem Header="{DynamicResource Lektion_1_Untertitel_3_2}"></MenuItem>
-                        <MenuItem Header="{DynamicResource Lektion_1_Untertitel_3_3}"></MenuItem>
+                        <MenuItem Header="{DynamicResource Lektion_1_Untertitel_3_1}" Click="Lektion_1_Untertitel_3_1_Click">></MenuItem>
+                        <MenuItem Header="{DynamicResource Lektion_1_Untertitel_3_2}" Click="Lektion_1_Untertitel_3_2_Click">></MenuItem>
+                        <MenuItem Header="{DynamicResource Lektion_1_Untertitel_3_3}" Click="Lektion_1_Untertitel_3_3_Click">></MenuItem>
                     </MenuItem>
                 </MenuItem>
                 <MenuItem Header="{DynamicResource Uebung_Titel}">
                     <MenuItem Header="{DynamicResource Uebung_1_Untertitel_1}" Click="Uebung_1_Untertitel_1_Click"></MenuItem>
-                    <MenuItem Header="{DynamicResource Uebung_1_Untertitel_2}"></MenuItem>
+                    <MenuItem Header="{DynamicResource Uebung_1_Untertitel_2}" Click="Uebung_1_Untertitel_2_Click"></MenuItem>
                 </MenuItem>
                 <MenuItem Header="{DynamicResource Extra_Titel}">
                     <MenuItem Header="{DynamicResource Extra_1_Untertitel_1}"></MenuItem>
@@ -61,17 +61,16 @@
                 </MenuItem>
             </MenuItem>
             <MenuItem Name="Menu_Lektion_2" Header="{DynamicResource Lektion_2_Titel}" Grid.Column="1" Visibility="Hidden">
-                <MenuItem Header="Tutorials">
-                    <MenuItem Header="Schwellwert"></MenuItem>
-                    <MenuItem Header="Fehler"></MenuItem>
-                    <MenuItem Header="Training"></MenuItem>
+                <MenuItem Header="{DynamicResource Lektion_Titel}">
+                    <MenuItem Header="{DynamicResource Lektion_2_Untertitel_1}"></MenuItem>
+                    <MenuItem Header="{DynamicResource Lektion_2_Untertitel_2}">></MenuItem>
                 </MenuItem>
-                <MenuItem Header="Exercise">
-                    <MenuItem Header="AND"></MenuItem>
-                    <MenuItem Header="OR"></MenuItem>
+                <MenuItem Header="{DynamicResource Uebung_Titel}">
+                    <MenuItem Header="{DynamicResource Uebung_2_Untertitel_1}"></MenuItem>
+                    <MenuItem Header="{DynamicResource Uebung_2_Untertitel_2}"></MenuItem>
                 </MenuItem>
-                <MenuItem Header="Extras">
-                    <MenuItem Header="Lineare Separierbarkeit"></MenuItem>
+                <MenuItem Header="{DynamicResource Extra_Titel}">
+                    <MenuItem Header="{DynamicResource Extra_2_Untertitel_1}"></MenuItem>
                 </MenuItem>
             </MenuItem>
             <MenuItem Name="Menu_Lektion_3" Header="{DynamicResource Lektion_3_Titel}" Grid.Column="2" Visibility="Hidden"> 
@@ -170,21 +169,25 @@
                                 <ColumnDefinition Width="3*"/>
                             </Grid.ColumnDefinitions>
                             <Image Source="Resources/schwell.png"/>
-                            <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                                <Label Content="{DynamicResource Lektion_Titel}" FontSize="16" FontWeight="Bold" Foreground="#FF62E418" Margin="20,0,0,0"/>
-                                <Button Content="{DynamicResource Lektion_1_Untertitel_1}" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="10" FontWeight="Bold" Click="Lektion_1_Untertitel_1_Click"></Button>
-                                <Button Content="{DynamicResource Lektion_1_Untertitel_2}" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="10" FontWeight="Bold"></Button>
-                                <Button Content="{DynamicResource Lektion_1_Untertitel_3}" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="10" FontWeight="Bold"></Button>
-                                <Button Content="{DynamicResource Lektion_1_Untertitel_3_1}" Background="{x:Null}" BorderBrush="{x:Null}" Margin="70,0,0,0" HorizontalAlignment="Left" FontSize="10" FontWeight="Bold"></Button>
-                                <Button Content="{DynamicResource Lektion_1_Untertitel_3_2}" Background="{x:Null}" BorderBrush="{x:Null}" Margin="70,0,0,0" HorizontalAlignment="Left" FontSize="10" FontWeight="Bold"></Button>
-                                <Button Content="{DynamicResource Lektion_1_Untertitel_3_3}" Background="{x:Null}" BorderBrush="{x:Null}" Margin="70,0,0,0" HorizontalAlignment="Left" FontSize="10" FontWeight="Bold"></Button>
-                                <Label Content="{DynamicResource Uebung_Titel}" FontSize="16" FontWeight="Bold" Foreground="#FFE4AC18" Margin="20,0,0,0"/>
-                                <Button Content="{DynamicResource Uebung_1_Untertitel_1}" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="10" FontWeight="Bold" Click="Uebung_1_Untertitel_1_Click"></Button>
-                                <Button Content="{DynamicResource Uebung_1_Untertitel_2}" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="10" FontWeight="Bold"></Button>
-                                <Label Content="{DynamicResource Extra_Titel}" FontSize="16" FontWeight="Bold" Foreground="Red" Margin="20,0,0,0"/>
-                                <Button Content="{DynamicResource Extra_1_Untertitel_1}" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="10" FontWeight="Bold"></Button>
-                                <Button Content="{DynamicResource Extra_1_Untertitel_2}" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="10" FontWeight="Bold"></Button>
-                            </StackPanel>
+                            <ScrollViewer Grid.Column="1">
+                                <StackPanel VerticalAlignment="Center">
+                                    <Label Content="{DynamicResource Lektion_Titel}" FontSize="20" FontWeight="Bold" Foreground="#FF62E418" Margin="20,0,0,0"/>
+                                    <Button Content="{DynamicResource Lektion_1_Untertitel_1}" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12" FontWeight="Bold" Click="Lektion_1_Untertitel_1_Click"></Button>
+                                    <Button Content="{DynamicResource Lektion_1_Untertitel_2}" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12" FontWeight="Bold" Click="Lektion_1_Untertitel_2_Click"></Button>
+                                    <Button Content="{DynamicResource Lektion_1_Untertitel_3}" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12" FontWeight="Bold" Click="Lektion_1_Untertitel_3_1_Click"></Button>
+                                    <Button Content="{DynamicResource Lektion_1_Untertitel_3_1}" Background="{x:Null}" BorderBrush="{x:Null}" Margin="70,0,0,0" HorizontalAlignment="Left" FontSize="12" FontWeight="Bold" Click="Lektion_1_Untertitel_3_1_Click"></Button>
+                                    <Button Content="{DynamicResource Lektion_1_Untertitel_3_2}" Background="{x:Null}" BorderBrush="{x:Null}" Margin="70,0,0,0" HorizontalAlignment="Left" FontSize="12" FontWeight="Bold" Click="Lektion_1_Untertitel_3_2_Click"></Button>
+                                    <Button Content="{DynamicResource Lektion_1_Untertitel_3_3}" Background="{x:Null}" BorderBrush="{x:Null}" Margin="70,0,0,0" HorizontalAlignment="Left" FontSize="12" FontWeight="Bold" Click="Lektion_1_Untertitel_3_3_Click"></Button>
+                                    <Label Content="{DynamicResource Uebung_Titel}" FontSize="20" FontWeight="Bold" Foreground="#FFE4AC18" Margin="20,0,0,0"/>
+                                    <Button Content="{DynamicResource Uebung_1_Untertitel_1}" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12" FontWeight="Bold" Click="Uebung_1_Untertitel_1_Click"></Button>
+                                    <Button Content="{DynamicResource Uebung_1_Untertitel_2}" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12" FontWeight="Bold" Click="Lektion_1_Untertitel_2_Click"></Button>
+                                    <Label Content="{DynamicResource Extra_Titel}" FontSize="20" FontWeight="Bold" Foreground="Red" Margin="20,0,0,0"/>
+                                    <Button Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12" FontWeight="Bold">
+                                        <TextBlock Text="{DynamicResource Extra_1_Untertitel_1}" TextWrapping="Wrap"/>
+                                    </Button>
+                                    <Button Content="{DynamicResource Extra_1_Untertitel_2}" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12" FontWeight="Bold"></Button>
+                                </StackPanel>
+                            </ScrollViewer>
                         </Grid>
                     </GroupBox>
                     <GroupBox Grid.Column="1" Grid.Row="0" BorderBrush="#FF4800FF" BorderThickness="2" Style="{DynamicResource GroupBoxStyleWithoutGap}">
@@ -200,14 +203,14 @@
                             </Grid.ColumnDefinitions>
                             <Image Source="Resources/slp.png"/>
                             <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                                <Label Content="Tutorials" FontSize="20" FontWeight="Bold" Foreground="#FF62E418" Margin="20,0,0,0"/>
-                                <Button Content="Aufbau" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12" FontWeight="Bold"></Button>
-                                <Button Content="Lernregeln" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12" FontWeight="Bold"></Button>
-                                <Label Content="Exercise" FontSize="20" FontWeight="Bold" Foreground="#FFE4AC18" Margin="20,0,0,0"/>
-                                <Button Content="XOR" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12" FontWeight="Bold"></Button>
-                                <Button Content="Muster" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12" FontWeight="Bold"></Button>
-                                <Label Content="Extra" FontSize="20" FontWeight="Bold" Foreground="Red" Margin="20,0,0,0"/>
-                                <Button Content="Bias" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12" FontWeight="Bold"></Button>
+                                <Label Content="{DynamicResource Lektion_Titel}" FontSize="20" FontWeight="Bold" Foreground="#FF62E418" Margin="20,0,0,0"/>
+                                <Button Content="{DynamicResource Lektion_2_Untertitel_1}" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12" FontWeight="Bold"></Button>
+                                <Button Content="{DynamicResource Lektion_2_Untertitel_2}" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12" FontWeight="Bold"></Button>
+                                <Label Content="{DynamicResource Uebung_Titel}" FontSize="20" FontWeight="Bold" Foreground="#FFE4AC18" Margin="20,0,0,0"/>
+                                <Button Content="{DynamicResource Uebung_2_Untertitel_1}" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12" FontWeight="Bold"></Button>
+                                <Button Content="{DynamicResource Uebung_2_Untertitel_2}" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12" FontWeight="Bold"></Button>
+                                <Label Content="{DynamicResource Extra_Titel}" FontSize="20" FontWeight="Bold" Foreground="Red" Margin="20,0,0,0"/>
+                                <Button Content="{DynamicResource Extra_2_Untertitel_1}" Background="{x:Null}" BorderBrush="{x:Null}" Margin="50,0,0,0" HorizontalAlignment="Left" FontSize="12" FontWeight="Bold"></Button>
                             </StackPanel>
                         </Grid>
                     </GroupBox>
@@ -612,6 +615,60 @@
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="30"/>
                     </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Content="{DynamicResource Lektion_1_Untertitel_3_1}"  FontWeight="Bold" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Row="1" Text="{DynamicResource Lektion_1_Untertitel_3_1_Detail}" FontWeight="Bold" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                                <TextBlock Text="{DynamicResource Lektion_1_Untertitel_3_1_Text}" TextWrapping="Wrap" Margin="40,10"/>
+                                <GroupBox Grid.Column="1" Grid.Row="0" Header="{DynamicResource Definition_Titel}" BorderBrush="Red" BorderThickness="2" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+                                    <StackPanel>
+                                        <TextBlock Text="{DynamicResource Lektion_1_Untertitel_3_1_Definition_1}" TextWrapping="Wrap" Margin="10,10,10,10"/>
+                                        <StackPanel HorizontalAlignment="Center">
+                                            <Label Content="θ(neu) = θ(alt)+deltat mit deltat=-n(o-y)," Margin="45,0,0,0" />
+                                            <Label Content="i:{1...n}: wi(neu) = wi(alt)+deltawi mit deltawi=-n(o-y)xi," />
+                                        </StackPanel>
+                                        <TextBlock Text="{DynamicResource Lektion_1_Untertitel_3_1_Definition_2}" TextWrapping="Wrap" Margin="10,10,10,10"/>
+                                    </StackPanel>
+                                </GroupBox>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1">
+                                <Image Source="Resources/schwellenwert_neg.png"/>
+                                <ListView HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridView.Columns>
+                                                <GridViewColumn Header="x₁" DisplayMemberBinding="{Binding [0]}"/>
+                                                <GridViewColumn Header="y" DisplayMemberBinding="{Binding [1]}"/>
+                                            </GridView.Columns>
+                                        </GridView>
+                                    </ListView.View>
+                                    <ListViewItem>
+                                        <x:Array Type="{x:Type system:String}">
+                                            <system:String>0</system:String>
+                                            <system:String>1</system:String>
+                                        </x:Array>
+                                    </ListViewItem>
+                                    <ListViewItem>
+                                        <x:Array Type="{x:Type system:String}">
+                                            <system:String>1</system:String>
+                                            <system:String>0</system:String>
+                                        </x:Array>
+                                    </ListViewItem>
+                                </ListView>
+                                <Image Source="Resources/Fehlerfunktion_Neg.png" Margin="100,20,100,0"/>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
                     <Grid Grid.Row="1">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>

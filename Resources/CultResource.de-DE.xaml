@@ -39,6 +39,10 @@
     <system:String x:Key="Lektion_1_Untertitel_2_Bsp_3_Titel">Schwellenwertelement für (x₁ &amp; ~x₂) | (x₁ &amp; x₃) | (~x₂ &amp; x₃).</system:String>
     <system:String x:Key="Lektion_1_Untertitel_3">Training</system:String>
     <system:String x:Key="Lektion_1_Untertitel_3_1">Fehler</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_1_Detail">Das Prinzip besteht darin, mit zufälligen Werten für die Gewichte und den Schwellenwert anzufangen und diese dann schrittweise zu verändern bis die gewünschte Funktion berechnet wird.</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_1_Text">Um ein Verfahren zur Anpassung der Gewichte und des Schwellenwertes zu finden, gehen wir von folgender Überlegung aus: Abhängig von den Werten der Gewichte und dem Schwellenwert wird die Berechnugn des Schwellenwertelementes mehr oder weniger richtig sein. Wir können daher eine Fehlerfunktion e(w₁,...,wₖ,θ) definieren, die angibt, wie gut die mit bestimmten Gewichten und einem bestimmten Schwellenwert berechnete Funktion mit der gewünschten übereinstimmt. Unser Ziel ist natürlich, die Gewichte und den Schwellenwert so zu bestimmen, dass der Fehler verschwindet, die Fehlerfunktion also 0 wird. Um das zu erreichen, versuchen wir in jedem Schritt den Wert der Fehlerfunktion zu verringern.</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_1_Definition_1">Sei x=(x₁,...xₙ) ein Eingabevektor eines Schwellenwertelementes, o die für diesen Eingabevektor gewünschte Ausgabe (output) und y die tatsächliche Ausgabe des Schwellenwertelementes. Ist y!=o, dann wird zur Verringerung des Fehlers der Schwellenwert θ und der Gewichtsvektor w=(w₁,...,wₖ) wie folgt verändert:</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_1_Definition_2">wobei n ein Parameter ist, der Lernrate genannt wird. Er bestimmt die Stärke der Gewichtsveränderungen. Dieses Verfahren heißt Delta-Regel oder Widrow-Hoff-Verfahren.</system:String>
     <system:String x:Key="Lektion_1_Untertitel_3_2">Online-Training</system:String>
     <system:String x:Key="Lektion_1_Untertitel_3_2_Detail">Dieser Algorithmus wendet immer wieder die Delta-Regel an, bis die Summe der Fehler über alle Trainingsbeispiele verschwindet. Dabei erfolgt die Anpassung des Schwellenwertes und der Gewichte mit jedem Trainingsbeispiel.</system:String>
 
@@ -120,6 +124,12 @@
     <system:String x:Key="Extra_1_Untertitel_2">XOR</system:String>
     
     <system:String x:Key="Lektion_2_Titel">Single Layer Perzeptron</system:String>
+    <system:String x:Key="Lektion_2_Untertitel_1">Aufbau</system:String>
+    <system:String x:Key="Lektion_2_Untertitel_2">Lernregeln</system:String>
+    <system:String x:Key="Uebung_2_Untertitel_1">XOR</system:String>
+    <system:String x:Key="Uebung_2_Untertitel_2">Muster</system:String>
+    <system:String x:Key="Extra_2_Untertitel_1">Bias</system:String>
+    
     <system:String x:Key="Lektion_3_Titel">Multi Layer Perzeptron</system:String>
     <system:String x:Key="Lektion_4_Titel">Radiale Basisfunktionen Netze</system:String>
     <system:String x:Key="Lektion_5_Titel">Selbstorganisierende Karte</system:String>

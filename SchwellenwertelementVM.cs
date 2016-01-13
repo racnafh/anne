@@ -430,13 +430,12 @@ namespace anne
         {
             Round = 0;
             int p;// set your progress if appropriate
-            double deltaT,deltaW1,deltaW2;
 
             ObservableCollection<SchwellenwertelementInput> daten = (ObservableCollection<SchwellenwertelementInput>)e.Argument;
             DSMAX = daten.Count;
             do
             {
-                deltaT = deltaW1 = deltaW2 = Error = DS = 0.0;
+                DeltaT = DeltaW1 = DeltaW2 = Error = DS = 0.0;
                 Round++;
                 foreach (SchwellenwertelementInput swei in daten)
                 {
@@ -464,9 +463,9 @@ namespace anne
                         worker.ReportProgress(p++, false);
                         Thread.Sleep(500);
 
-                        deltaT -= LP * (swei.Y - Y);
-                        deltaW1 += LP * (swei.Y - Y) * X1;
-                        deltaW2 += LP * (swei.Y - Y) * X2;
+                        DeltaT -= LP * (swei.Y - Y);
+                        DeltaW1 += LP * (swei.Y - Y) * X1;
+                        DeltaW2 += LP * (swei.Y - Y) * X2;
 
                         worker.ReportProgress(++p);
                         Thread.Sleep(500);
@@ -478,11 +477,11 @@ namespace anne
                     }
                 }
 
-                if(deltaT!=0)
+                if(DeltaT!=0)
                 {
-                    T += deltaT;
-                    W1 += deltaW1;
-                    W2 += deltaW2;
+                    T += DeltaT;
+                    W1 += DeltaW1;
+                    W2 += DeltaW2;
 
                     worker.ReportProgress(6);
                     Thread.Sleep(1000);
