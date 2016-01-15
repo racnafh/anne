@@ -6,7 +6,7 @@
         xmlns:system="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:anne"
         mc:Ignorable="d"
-        Title="Artificial Neural Network Educator" Height="768" Width="1024">
+        Title="Artificial Neural Network Educator" Height="768" Width="1024" Icon="Resources/icon.ico">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="100" />
@@ -634,8 +634,8 @@
                                     <StackPanel>
                                         <TextBlock Text="{DynamicResource Lektion_1_Untertitel_3_1_Definition_1}" TextWrapping="Wrap" Margin="10,10,10,10"/>
                                         <StackPanel HorizontalAlignment="Center">
-                                            <Label Content="θ(neu) = θ(alt)+deltat mit deltat=-n(o-y)," Margin="45,0,0,0" />
-                                            <Label Content="i:{1...n}: wi(neu) = wi(alt)+deltawi mit deltawi=-n(o-y)xi," />
+                                            <Label Content="θ(neu) = θ(alt)+Δθ mit Δθ=-n(o-y)," Margin="45,0,0,0" />
+                                            <Label Content="k:{1...n}: wₖ(neu) = wₖ(alt)+Δwₖ mit Δwₖ=-n(o-y)xₖ," />
                                         </StackPanel>
                                         <TextBlock Text="{DynamicResource Lektion_1_Untertitel_3_1_Definition_2}" TextWrapping="Wrap" Margin="10,10,10,10"/>
                                     </StackPanel>

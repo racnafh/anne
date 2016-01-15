@@ -40,8 +40,8 @@
     <system:String x:Key="Lektion_1_Untertitel_3">Training</system:String>
     <system:String x:Key="Lektion_1_Untertitel_3_1">Fehler</system:String>
     <system:String x:Key="Lektion_1_Untertitel_3_1_Detail">Das Prinzip besteht darin, mit zufälligen Werten für die Gewichte und den Schwellenwert anzufangen und diese dann schrittweise zu verändern bis die gewünschte Funktion berechnet wird.</system:String>
-    <system:String x:Key="Lektion_1_Untertitel_3_1_Text">Um ein Verfahren zur Anpassung der Gewichte und des Schwellenwertes zu finden, gehen wir von folgender Überlegung aus: Abhängig von den Werten der Gewichte und dem Schwellenwert wird die Berechnugn des Schwellenwertelementes mehr oder weniger richtig sein. Wir können daher eine Fehlerfunktion e(w₁,...,wₖ,θ) definieren, die angibt, wie gut die mit bestimmten Gewichten und einem bestimmten Schwellenwert berechnete Funktion mit der gewünschten übereinstimmt. Unser Ziel ist natürlich, die Gewichte und den Schwellenwert so zu bestimmen, dass der Fehler verschwindet, die Fehlerfunktion also 0 wird. Um das zu erreichen, versuchen wir in jedem Schritt den Wert der Fehlerfunktion zu verringern.</system:String>
-    <system:String x:Key="Lektion_1_Untertitel_3_1_Definition_1">Sei x=(x₁,...xₙ) ein Eingabevektor eines Schwellenwertelementes, o die für diesen Eingabevektor gewünschte Ausgabe (output) und y die tatsächliche Ausgabe des Schwellenwertelementes. Ist y!=o, dann wird zur Verringerung des Fehlers der Schwellenwert θ und der Gewichtsvektor w=(w₁,...,wₖ) wie folgt verändert:</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_1_Text">Um ein Verfahren zur Anpassung der Gewichte und des Schwellenwertes zu finden, gehen wir von folgender Überlegung aus: Abhängig von den Werten der Gewichte und dem Schwellenwert wird die Berechnung des Schwellenwertelementes mehr oder weniger richtig sein. Wir können daher eine Fehlerfunktion e(w₁,...,wₙ,θ) definieren, die angibt, wie gut die mit bestimmten Gewichten und einem bestimmten Schwellenwert berechnete Funktion mit der gewünschten übereinstimmt. Unser Ziel ist natürlich, die Gewichte und den Schwellenwert so zu bestimmen, dass der Fehler verschwindet, die Fehlerfunktion also 0 wird. Um das zu erreichen, versuchen wir in jedem Schritt den Wert der Fehlerfunktion zu verringern.</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_1_Definition_1">Sei x=(x₁,...xₙ) ein Eingabevektor eines Schwellenwertelementes, o die für diesen Eingabevektor gewünschte Ausgabe (output) und y die tatsächliche Ausgabe des Schwellenwertelementes. Ist y≠o, dann wird zur Verringerung des Fehlers der Schwellenwert θ und der Gewichtsvektor w=(w₁,...,wₙ) wie folgt verändert:</system:String>
     <system:String x:Key="Lektion_1_Untertitel_3_1_Definition_2">wobei n ein Parameter ist, der Lernrate genannt wird. Er bestimmt die Stärke der Gewichtsveränderungen. Dieses Verfahren heißt Delta-Regel oder Widrow-Hoff-Verfahren.</system:String>
     <system:String x:Key="Lektion_1_Untertitel_3_2">Online-Training</system:String>
     <system:String x:Key="Lektion_1_Untertitel_3_2_Detail">Dieser Algorithmus wendet immer wieder die Delta-Regel an, bis die Summe der Fehler über alle Trainingsbeispiele verschwindet. Dabei erfolgt die Anpassung des Schwellenwertes und der Gewichte mit jedem Trainingsbeispiel.</system:String>
@@ -80,21 +80,21 @@
 
     <system:String x:Key="Lektion_1_Untertitel_3_3_Code">procedure batch_training (var w, var t, L, n);</system:String>
     <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line1">var y,e,</system:String>
-    <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line2">deltat,deltaw;</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line2">Δt,Δw;</system:String>
     <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line3">begin</system:String>
     <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line4">repeat</system:String>
-    <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line5">e:=0; deltat:=0; deltaw:=0;</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line5">e:=0; Δt:=0; Δw:=0;</system:String>
     <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line6">for all (x,o) € L do begin</system:String>
     <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line7">if (wx >= t) then y:=1;</system:String>
     <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line8">else y:=0;</system:String>
     <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line9">if (y != 0) then begin</system:String>
-    <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line10">deltat := deltat - n(o-y);</system:String>
-    <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line11">deltaw := deltaw + n(o-y)x;</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line10">Δt := Δt - n(o-y);</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line11">Δw := Δw + n(o-y)x;</system:String>
     <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line12">e := e + |o-y|;</system:String>
     <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line13">end;</system:String>
     <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line14">end;</system:String>
-    <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line15">t:=t+deltat;</system:String>
-    <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line16">w:=w+deltaw;</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line15">t:=t+Δt;</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line16">w:=w+Δw;</system:String>
     <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line17">until (e=0)</system:String>
     <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line18">end;</system:String>
 

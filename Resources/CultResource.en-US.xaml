@@ -39,6 +39,10 @@
     <system:String x:Key="Lektion_1_Untertitel_2_Bsp_3_Titel">A treshold element for (x₁ &amp; ~x₂) | (x₁ &amp; x₃) | (~x₂ &amp; x₃).</system:String>
     <system:String x:Key="Lektion_1_Untertitel_3">Training</system:String>
     <system:String x:Key="Lektion_1_Untertitel_3_1">Error</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_1_Detail">The principle is to start with random values for the weigths and the treshold element and to change these step by step until the requested function is calculated.</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_1_Text">To find a procedure for adjusting the weights and the treahold element, we assume the following consideration: Depending on the values of the weights and the treshold element the calculation of the treshold element will be more or less correct. Therefore we can define an error function e(w₁,...,wₙ,θ) which states how well the calculated function, which is calculated with certain weights an a certain treshold element agrees with the requested. Our goal is to define the weights and the treshold element in a way that the error vanishes, so the error function is 0. For reaching that, we try to decrease the value of the error function with each step.</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_1_Definition_1">May x=(x₁,...xₙ) be an input vector of a treshold element, o the requested output for this inpt vector and y the actual output of this treshold element. If y≠o, the treshold element θ and the weight vector w=(w₁,...,wₙ) will be changed for decreasing the error in the following way:</system:String>
+    <system:String x:Key="Lektion_1_Untertitel_3_1_Definition_2">where n is a parameter which is called a learning rate. It defines the intensity of the weight modification. This algorithm is called the delta rule or Widrow-off-algorithm.</system:String>
     <system:String x:Key="Lektion_1_Untertitel_3_2">Online-Training</system:String>
     <system:String x:Key="Lektion_1_Untertitel_3_2_Detail">This algorithm always uses the delta-rule until the sum of errors for all training examples vanishes. Thereby the adaption of the treshold element and the weights follows with every training example.</system:String>
 
@@ -72,7 +76,8 @@
     <system:String x:Key="Lektion_1_Untertitel_3_2_Kommentar_Line15">(* until the error vanishes *)</system:String>
 
     <system:String x:Key="Lektion_1_Untertitel_3_3">Batch-Training</system:String>
-    
+    <system:String x:Key="Lektion_1_Untertitel_3_3_Detail">In this algorithm the delta rule is used in a modified way. In a flow of the training examples for each example the same treshold element an weights are used. The modifictions that were calcualted with a wrong output will be summarized with the variables deltat and deltaw. Not until the processing of all training examples, the weights and the treshold element will be adjusted with the aid of these variables.</system:String>
+
     <system:String x:Key="Lektion_1_Untertitel_3_3_Code">procedure batch_training (var w, var t, L, n);</system:String>
     <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line1">var y,e,</system:String>
     <system:String x:Key="Lektion_1_Untertitel_3_3_Code_Line2">deltat,deltaw;</system:String>
