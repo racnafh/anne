@@ -1,1 +1,2 @@
-//Es ist bald Wochenende da muss noch Bier gehlt werden
+//Es ist bald Wochenende da muss noch Bier gekauft werden.
+//Und Pommes
